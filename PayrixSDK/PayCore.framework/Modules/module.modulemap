@@ -1,0 +1,11 @@
+framework module PayCore {
+  umbrella header "PayCore.h"
+
+  export *
+  module * { export * }
+}
+
+module PayCore.Swift {
+    header "PayCore-Swift.h"
+    requires objc
+}
