@@ -1,0 +1,11 @@
+framework module PayCard {
+  umbrella header "PayCard.h"
+
+  export *
+  module * { export * }
+}
+
+module PayCard.Swift {
+    header "PayCard-Swift.h"
+    requires objc
+}
