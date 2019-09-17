@@ -167,6 +167,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @import ObjectiveC;
 #endif
 
+#import <PayCard/PayCard.h>
+
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
 #if __has_warning("-Wpragma-clang-attribute")
@@ -181,6 +183,78 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma clang attribute push(__attribute__((external_source_symbol(language="Swift", defined_in="PayCard",generated_declaration))), apply_to=any(function,enum,objc_interface,objc_category,objc_protocol))
 # pragma pop_macro("any")
 #endif
+
+
+SWIFT_CLASS("_TtC7PayCard21DeviceControllerBBPOS")
+@interface DeviceControllerBBPOS : NSObject <BBDeviceControllerDelegate>
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+/// <em>onBTReturnScanResults</em>
+/// The callback triggered by bbPOS startBTScan. This callback delivers an array of found bluetooth peripherals.
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     devices: Returned Peripheral devices
+///   </li>
+/// </ul>
+- (void)onBTReturnScanResults:(NSArray * _Null_unspecified)devices;
+/// <em>onBTConnected</em>
+/// The callback triggered by bbPOS connectBT. This callback delivers the object that was connected.
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     connectedDevice: Returned Connected Object
+///   </li>
+/// </ul>
+- (void)onBTConnected:(NSObject * _Null_unspecified)connectedDevice;
+- (void)onBTScanTimeout;
+/// <em>onBTDisconnected</em>
+/// The callback triggered by bbPOS disconnectBT.
+- (void)onBTDisconnected;
+- (void)onReturnDeviceInfo:(NSDictionary * _Null_unspecified)deviceInfo;
+- (void)onError:(BBDeviceErrorType)errorType errorMessage:(NSString * _Nonnull)errorMessage;
+@end
+
+
+
+
+/// <em>DeviceControllerIDTCH is the Primary API Access Point for using the PayCard Device Driver for ID Tech for Device Processing</em>
+/// This is a Singleton Design Pattern so only 1 instance should ever existing to process
+/// any requests from other classes.
+/// <ul>
+///   <li>
+///     IDT_VP3300_Delegate is the name ID Tech Protocol for managing Callbacks
+///   </li>
+/// </ul>
+SWIFT_CLASS("_TtC7PayCard21DeviceControllerIDTCH")
+@interface DeviceControllerIDTCH : NSObject <IDT_VP3300_Delegate>
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+/// <em>deviceMessage</em>
+/// This method is callback from ID Tech that is triggered when an general information message is returned from the device.
+/// The message is then returned to PayCard using callback: didReturnDevError.
+/// \param message A string containing the general information message.
+///
+- (void)deviceMessage:(NSString * _Null_unspecified)message;
+/// <em>deviceConnected</em>
+/// This method is callback from ID Tech that is triggered when a BT Device is Connected.
+/// This method is used by 2 processes.  The standard BT Connect process and the BT Reset / Reconnect process.
+/// If it is a standard Bt Connect then is PayCard notified of the successful connection using the callback: didBTConnect.
+/// Otherwise for a reset the appropriate action or non-action is taken.
+- (void)deviceConnected;
+/// <em>deviceDisconnected</em>
+/// This method is callback from ID Tech that is triggered when a BT Device is Disconnected.
+/// This method is used by 2 processes.  The standard BT Disconnect process, or when the device is disconnected by the user and the BT Reset / Reconnect process.
+/// If it is a standard Bt Disconnect then PayCard is notified of the disconnection using the callback: didBTDisconnect.
+/// Otherwise for a reset the appropriate action or non-action is taken.
+- (void)deviceDisconnected;
+@end
+
+
 
 
 /// <em>PDeviceLoader is the for dynamically loading Card Reader Device Drivers</em>
@@ -221,6 +295,141 @@ SWIFT_CLASS("_TtC7PayCard13PayCardRDRMgr")
 - (void)centralManagerDidUpdateState:(CBCentralManager * _Nonnull)central;
 - (void)centralManager:(CBCentralManager * _Nonnull)central didDiscoverPeripheral:(CBPeripheral * _Nonnull)peripheral advertisementData:(NSDictionary<NSString *, id> * _Nonnull)advertisementData RSSI:(NSNumber * _Nonnull)RSSI;
 @end
+
+
+/// ** SharedDriverAttr contains the shared attributes used the PayCard Device Drivers **
+SWIFT_CLASS("_TtC7PayCard16SharedDriverAttr")
+@interface SharedDriverAttr : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC7PayCard26TransactionControllerBBPOS")
+@interface TransactionControllerBBPOS : NSObject <BBDeviceControllerDelegate>
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+/// <em>onWaitingForCard</em>
+/// This method is a listener to handle callback for bbPOS startEMV. It will be engaged if the user needs to respond to
+/// the reader device.  A callback to the user App as method: didReceiveReaderModeUpdate
+/// <ul>
+///   <li>
+///     Paramater:
+///   </li>
+///   <li>
+///     checkCardMode: The device status / mode of type BBDeviceCheckCardMode
+///   </li>
+/// </ul>
+- (void)onWaitingForCard:(BBDeviceCheckCardMode)checkCardMode;
+- (void)onRequestDisplayText:(BBDeviceDisplayText)displayMessage;
+/// <em>onReturnCheckCardResult</em>
+/// This method is a listener to handle Callback from bbPOS for magnetic strip event.
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     result: A result of type BBDeviceCheckCardResult
+///   </li>
+///   <li>
+///     cardData: A dictionary containing returned card data depending on the result.
+///   </li>
+/// </ul>
+- (void)onReturnCheckCardResult:(BBDeviceCheckCardResult)result cardData:(NSDictionary * _Null_unspecified)cardData;
+/// <em>onRequestFinalConfirm</em>
+/// This method is a listener to handle Callback from bbPOS after the initial card processing.
+/// This callback is triggered when the card swipe / insert process has occured,
+/// and is awaiting transaction confirmation.
+- (void)onRequestFinalConfirm;
+/// <em>onRequestOnlineProcess</em>
+/// This method serves as a listener to catch request from the device to do Online Host
+/// processing as required by the EMV process. The device sends data in TLV (tag-length-value) format and
+/// that information is sent to the caller App (requestForHostEMVProcess). Once processed the
+/// App returns the response (responseFromHostEMVProcess)
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     tlv: Device transaction data in TLV (tag-length-value) format
+///   </li>
+/// </ul>
+- (void)onRequestOnlineProcess:(NSString * _Null_unspecified)tlv;
+/// <em>onReturnBatchData</em>
+/// This method serves as a listener to catch response from the device after the EMV transaction
+/// is complete. The device sends data in TLV (tag-length-value) format and
+/// that information is sent to the caller App (didReceiveFinalEMVBatchData).
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     tlv: Device transaction data in TLV (tag-length-value) format
+///   </li>
+/// </ul>
+- (void)onReturnBatchData:(NSString * _Nonnull)tlv;
+/// <em>onReturnTransactionResult</em>
+/// This method serves as a listener to catch response from the device after the EMV transaction
+/// is complete. The device sends the resulting status of the transaction.  The method takes that
+/// result and responds to the calling App via callback (didCompleteEMVCardTransaction) with
+/// success (true) or failure (false) and the Results from the device.
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     result: The transaction result from the Device of type BBDeviceTransactionResult.
+///   </li>
+/// </ul>
+- (void)onReturnTransactionResult:(BBDeviceTransactionResult)result;
+- (void)onError:(BBDeviceErrorType)errorType errorMessage:(NSString * _Nonnull)errorMessage;
+- (void)onReturnDeviceInfo:(NSDictionary * _Null_unspecified)deviceInfo;
+@end
+
+
+
+@class IDTEMVData;
+
+/// <em>TransactionControllerIDTCH is the Primary API Access Point for using the PayCard Device Driver for ID Tech for Transaction Processing</em>
+/// This is a Singleton Design Pattern so only 1 instance should ever existing to process
+/// any requests from other classes.
+/// <ul>
+///   <li>
+///     IDT_VP3300_Delegate is the name ID Tech Protocol for managing Callbacks
+///   </li>
+/// </ul>
+SWIFT_CLASS("_TtC7PayCard26TransactionControllerIDTCH")
+@interface TransactionControllerIDTCH : NSObject <IDT_VP3300_Delegate>
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
+/// <em>deviceConnected</em>
+/// This is the Callback from the ID Tech SDK upon the completion of a successful connection to the Bluetooth device.
+/// This device connect request is part of the device reset process, and not part of the normal BT Connection process managed in the DeviceController.
+/// When the device is connected the reset of the device is completed and the transaction can be processed.
+- (void)deviceConnected;
+/// <em>deviceMessage</em>
+/// This is the Callback from the ID Tech SDK when an Informative message is returned.
+/// Then the message is sent to PayCard using the callback: didReceiveMessage
+/// \param message The Transaction Data in a Key-Value Pair Container (Dictionary)
+///
+- (void)deviceMessage:(NSString * _Null_unspecified)message;
+/// <em>emvTransactionData</em>
+/// This is the Callback from the ID Tech SDK for EMV Callbacks.
+/// This method handles both encrypted MSR and EMV transactions.  This replaced the above legacy methods.
+/// The method uses a combination of ResultCodeV2 (supercedes original ResultCode) and errorCode to determine the
+/// next action.  Unfortunately, ID Tech uses “errorCode” for responses and not just true errors.  It can be very
+/// confusing, and there is little consistency on when and how its used. Best to check both if not sure.
+/// \param emvData EMV Swipe data in object IDTEMVData.
+///
+/// \param error Int32 containing Error / Response codes
+///
+- (void)emvTransactionData:(IDTEMVData * _Null_unspecified)emvData errorCode:(int32_t)error;
+/// <em>deviceDisconnected</em>
+/// The IDTech callback triggered by disconnectBT.
+/// The ConnectionMode indicator in DeviceController is updated to reflect the latest status.
+- (void)deviceDisconnected;
+@end
+
+
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
