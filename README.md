@@ -1,6 +1,7 @@
 # The PayrixMobile SDK
 Release Note Summary:
-- Version 2.0.0: The PayrixMobile SDK has been upgraded to Swift 5.
+- Version 2.0.1: The PayrixMobile SDK has been upgraded to Swift 5.
+- Version 2.0.0: The PayrixMobile SDK included minor fixes for backward compatibility.
 - Version 1.1.1: The PayrixMobile SDK included minor fixes.
 - Version 1.1.0: The PayrixMobile SDK is enhanced to provide support for ID Tech Card Readers.  The original version supported bbPOS Card Readers and Manual Entry.
 - Version 1.0.0: The original release of the PayrixMobile SDK.
@@ -37,7 +38,7 @@ After running this command line request, you will see the following messages:
 *Pod installation complete! There are x dependencies from the Podfile and x total pods installed.
 Analyzing dependencies
 Downloading dependencies
-Installing PayrixSDK (2.0.0)*
+Installing PayrixSDK (2.0.1)*
 
 That’s it.  The SDK has been added to your project and you can now access the services of the SDK.  Refer to the CurrencyPaySDK Developer's Guide for information about using the SDK.
 
