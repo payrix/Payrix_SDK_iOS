@@ -1,0 +1,752 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.1 effective-4.2 (swiftlang-1100.0.270.13 clang-1100.0.33.7)
+// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 4.2 -enforce-exclusivity=checked -O -module-name PayCard
+import AVFoundation
+import CoreBluetooth
+@_exported import PayCard
+import Swift
+import UIKit
+public protocol PayCardRDRMgrDelegate {
+  func didFindRDRDevices(rdrDevices: [Swift.String], btUUIDs: [Swift.String : Swift.String], manfgNames: [Swift.String : Swift.String])
+  func didSuccessfulBTConnect()
+  func didReceiveBTConnectIssue(errMsg: Swift.String)
+  func didReceiveBTScanTimeOut()
+  func didReceiveBTDisconnect()
+  func didReceiveCardReaderError(errNumber: Swift.Int, errMessage: Swift.String)
+  func didReceiveCardReaderConnectionFailed(error: Swift.String)
+  func didReceiveAudioConnectedNotice()
+  func didReceiveAudioAttachedNotice()
+  func didReceiveAudioDisconnectedNotice()
+  func didReceiveDeviceInfo(deviceInfo: [Swift.AnyHashable : Any]!)
+}
+@objc public class PayCardRDRMgr : ObjectiveC.NSObject, PayCard.DeviceControlBBPOSDelegate, PayCard.DeviceControlIDTCHDelegate {
+  public static let sharedInstance: PayCard.PayCardRDRMgr
+  public var delegate: PayCard.PayCardRDRMgrDelegate?
+  public func startPayCardRDRMgr(forDevice: PayCard.PayCardSharedAttr.PayCardSupportedReaders?)
+  public func stopScan()
+  public func scanForReaders()
+  public func didReturnDeviceList(deviceList: [Swift.String], peripheralList: [Swift.String : Swift.String], manfgList: [Swift.String : Swift.String])
+  public func connectBTReader(useSerialNumber: Swift.String)
+  public func connectBTReader(useDeviceID: Swift.String)
+  public func connectAudioReader()
+  public func disconnectAudioReader()
+  public func detectConnectionType() -> PayCard.PayCardSharedAttr.PayCardConnectMode
+  public func detectAudioReaderChange(detectOn: Swift.Bool)
+  public func isAudioReaderAttached() -> Swift.Bool
+  public func isAudioReaderConnected() -> Swift.Bool
+  public func isReaderConnected() -> Swift.Bool
+  public func isBTReaderConnected() -> Swift.Bool
+  public func disconnectReader()
+  public func disconnectBTReader()
+  public func getDeviceData()
+  public func didReturnDeviceData(deviceInfo: [Swift.AnyHashable : Any]!)
+  public func didBTConnect()
+  public func didBTTimeout()
+  public func didBTDisconnect()
+  public func didReturnDevError(errorType: Swift.Int, errorMessage: Swift.String)
+  @objc deinit
+}
+extension PayCardRDRMgrDelegate {
+  public func didFindRDRDevices(rdrDevices: [Swift.String], btUUIDs: [Swift.String : Swift.String], manfgNames: [Swift.String : Swift.String])
+  public func didSuccessfulBTConnect()
+  public func didReceiveCardReaderError(errNumber: Swift.Int, errMessage: Swift.String)
+  public func didReceiveCardReaderConnectionFailed(error: Swift.String)
+  public func didReceiveAudioConnectedNotice()
+  public func didReceiveAudioDisconnectedNotice()
+  public func didReceiveDeviceInfo(deviceInfo: [Swift.AnyHashable : Any]!)
+  public func didReceiveBTConnectIssue(errMsg: Swift.String)
+  public func didReceiveBTDisconnect()
+  public func didReceiveBTScanTimeOut()
+  public func didReceiveAudioAttachedNotice()
+}
+extension PayCardRDRMgr : CoreBluetooth.CBCentralManagerDelegate, CoreBluetooth.CBPeripheralDelegate {
+  @objc dynamic public func centralManagerDidUpdateState(_ central: CoreBluetooth.CBCentralManager)
+  public func paycardReaderScan(withCBUUIDs: [CoreBluetooth.CBUUID]?)
+  @objc dynamic public func centralManager(_ central: CoreBluetooth.CBCentralManager, didDiscover peripheral: CoreBluetooth.CBPeripheral, advertisementData: [Swift.String : Any], rssi RSSI: Foundation.NSNumber)
+}
+public protocol TransactionControlBBPOSDelegate {
+  func didWait(checkCardMode: Swift.Int)
+  func didReceiveMessage(deviceMessage: Swift.String)
+  func didReturnCardResult(cardResult: Swift.Int, cardData: [Swift.AnyHashable : Any]!)
+  func didRequestFinalConfirm()
+  func didRequestOnlineProcess(tlv: Swift.String!, cardData: [Swift.AnyHashable : Any]?)
+  func didReturnBatchData(tlv: Swift.String)
+  func didReturnTxnResult(txnResult: Swift.Int)
+  func didReturnTxnError(errorType: Swift.Int, errorMessage: Swift.String)
+  func didReturnDeviceInfo(forTxn: [Swift.AnyHashable : Any]!)
+}
+@objc public class TransactionControllerBBPOS : ObjectiveC.NSObject, PayCard.BBDeviceControllerDelegate {
+  public static let sharedInstance: PayCard.TransactionControllerBBPOS
+  public var delegate: PayCard.TransactionControlBBPOSDelegate?
+  public typealias TransactionControllerDelegate = PayCard.TransactionControlBBPOSDelegate
+  public func loadDynamicTransactionDriver()
+  public func doCardReaderTransaction(withTxnData: [Swift.String : Any])
+  @objc public func onWaiting(forCard checkCardMode: PayCard.BBDeviceCheckCardMode)
+  @objc public func onRequest(_ displayMessage: PayCard.BBDeviceDisplayText)
+  @objc public func onReturn(_ result: PayCard.BBDeviceCheckCardResult, cardData: [Swift.AnyHashable : Any]!)
+  public func doPinEntry(pinData: [Swift.String : Any])
+  @objc public func onRequestFinalConfirm()
+  public func doCardConfirm(confirmed: Swift.Bool)
+  @objc public func onRequestOnlineProcess(_ tlv: Swift.String!)
+  public func doSendHostEMVResponse(hostEMVData: [Swift.AnyHashable : Any])
+  @objc public func onReturnBatchData(_ tlv: Swift.String)
+  @objc public func onReturn(_ result: PayCard.BBDeviceTransactionResult)
+  public func doDecodeTLV(tlv: Swift.String) -> [Swift.AnyHashable : Any]?
+  public func doEncodeTLV(tagsNvalues: [Swift.AnyHashable : Any]) -> Swift.String?
+  @objc public func onError(_ errorType: PayCard.BBDeviceErrorType, errorMessage: Swift.String)
+  public func doVerifyDeviceStartProcess()
+  @objc public func onReturnDeviceInfo(_ deviceInfo: [Swift.AnyHashable : Any]!)
+  @objc deinit
+}
+public protocol DeviceControlIDTCHDelegate {
+  func didBTConnect()
+  func didBTDisconnect()
+  func didBTTimeout()
+  func didReturnDeviceData(deviceInfo: [Swift.AnyHashable : Any]!)
+  func didReturnDevError(errorType: Swift.Int, errorMessage: Swift.String)
+}
+@objc public class DeviceControllerIDTCH : ObjectiveC.NSObject, PayCard.IDT_VP3300_Delegate {
+  public static let sharedInstance: PayCard.DeviceControllerIDTCH
+  public var delegate: PayCard.DeviceControlIDTCHDelegate?
+  public typealias DeviceControllerDelegate = PayCard.DeviceControlIDTCHDelegate
+  public var connectionMode: PayCard.SharedDriverAttr.PayCardDevConnectMode
+  public var sharedUUID: Swift.String
+  public func loadDynamicDeviceDriver()
+  public func connectBTReader(useNumber: Swift.String)
+  public func plugStatusChange(deviceInserted: Swift.Bool)
+  @objc public func deviceMessage(_ message: Swift.String!)
+  @objc public func deviceConnected()
+  @objc public func deviceDisconnected()
+  public func disconnectBTReader()
+  public func connectAudioReader() -> Swift.Bool
+  public func disconnectAudioReader()
+  public func detectConnectionType() -> PayCard.SharedDriverAttr.PayCardDevConnectMode
+  public func getDeviceData()
+  @objc deinit
+}
+public protocol TransactionControlIDTCHDelegate {
+  func didWait(checkCardMode: Swift.Int)
+  func didReceiveMessage(deviceMessage: Swift.String)
+  func didReturnCardResult(cardResult: Swift.Int, cardData: [Swift.AnyHashable : Any]!)
+  func didRequestFinalConfirm()
+  func didRequestOnlineProcess(tlv: Swift.String!, cardData: [Swift.AnyHashable : Any]?)
+  func didReturnBatchData(tlv: Swift.String)
+  func didReturnTxnResult(txnResult: Swift.Int)
+  func didReturnTxnError(errorType: Swift.Int, errorMessage: Swift.String)
+  func didReturnDeviceInfo(forTxn: [Swift.AnyHashable : Any]!)
+  func didReturnNoDeviceInfo()
+  func didReturnSevereError(errorMsg: Swift.String)
+}
+@objc public class TransactionControllerIDTCH : ObjectiveC.NSObject, PayCard.IDT_VP3300_Delegate {
+  public static let sharedInstance: PayCard.TransactionControllerIDTCH
+  public var delegate: PayCard.TransactionControlIDTCHDelegate?
+  public typealias TransactionControllerDelegate = PayCard.TransactionControlIDTCHDelegate
+  public func loadDynamicTransactionDriver()
+  public func doCardReaderTransaction(withTxnData: [Swift.String : Any])
+  @objc public func deviceConnected()
+  @objc public func deviceMessage(_ message: Swift.String!)
+  public func swipeMSRData(cardData: PayCard.IDTMSRData!)
+  public func swipeMSRDataEMV(emvData: PayCard.IDTEMVData!)
+  @objc public func emvTransactionData(_ emvData: PayCard.IDTEMVData!, errorCode error: Swift.Int32)
+  public func doPinEntry(pinData: [Swift.String : Any])
+  public func doCardConfirm(confirmed: Swift.Bool)
+  public func doSendHostEMVResponse(hostEMVData: [Swift.AnyHashable : Any])
+  public func doDecodeTLV(tlv: Swift.String) -> [Swift.AnyHashable : Any]?
+  public func doEncodeTLV(tagsNvalues: [Swift.AnyHashable : Any]) -> Swift.String?
+  public func doVerifyDeviceStartProcess()
+  @objc public func deviceDisconnected()
+  @objc deinit
+}
+public class PayCardSharedAttr {
+  public static let bluetoothReaderStateKey: Swift.String
+  public static let bluetoothReaderSerialNumberKey: Swift.String
+  public static let bluetoothReaderManfgKey: Swift.String
+  public static let bluetoothReaderUUIDKey: Swift.String
+  public static let cardReaderTerminalIDKey: Swift.String
+  public static let cardReaderTerminalPwdKey: Swift.String
+  public static let cardReaderHostURLTEST: Swift.String
+  public static let cardReaderHostURLPROD: Swift.String
+  public static let bluetoothReaderAvailableKey: Swift.String
+  public static let audioReaderAvailableKey: Swift.String
+  public static let cardReaderDeviceTypeKey: Swift.String
+  public static let bluetoothReaderDisconnectNotice: Swift.String
+  public static let bluetoothReaderDeviceReadyNotice: Swift.String
+  public static let deviceBBPOS_Messages: [Swift.String]
+  public enum PayCardConnectMode : Swift.Int {
+    case Connection_None
+    case Connection_Audio
+    case Connection_Bluetooth
+    case Connection_USB
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum readerEntryMode : Swift.String {
+    case read_Manual_Entry
+    case read_Track1
+    case read_Track2
+    case read_MagneticStrip
+    case read_EMV_ChipCard
+    case read_Contactless_EMV
+    case read_Fallback_Magnetic
+    case read_Fallback_Keyed
+    case read_ApplePay
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum industryPOSEntryMode : Swift.String {
+    case ind_Unknown
+    case ind_Manual_Entry
+    case ind_MagneticStrip
+    case ind_BarCode
+    case ind_OCR
+    case ind_EMV_ChipCard
+    case ind_Contactless_EMV
+    case ind_Fallback_Magnetic
+    case ind_MagneticStripFromTrack2
+    case ind_ContactlessMagneticStrip
+    case ind_ICCNoCVV
+    case ind_SameAsOriginal
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum PayCardDeviceMode : Swift.Int {
+    case cardDeviceMode_Swipe
+    case cardDeviceMode_Insert
+    case cardDeviceMode_Tap
+    case cardDeviceMode_SwipeOrInsert
+    case cardDeviceMode_SwipeOrTap
+    case cardDeviceMode_SwipeOrInsertOrTap
+    case cardDeviceMode_InsertOrTap
+    case cardDeviceMode_ManualEntry
+    case cardDeviceMode_QRCode
+    case cardDeviceMode_InsertNotSwipe
+    case cardDeviceMode_Confirm
+    case cardDeviceMode_Unknown
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum PayCardSupportedReaders : Swift.String {
+    case reader_BBPOS
+    case reader_IDTECH
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+    public init?(rawValue: Swift.String)
+  }
+  public enum PayCardReaderUUID : Swift.String {
+    case uuid_BBPOS
+    case uuid_IDTECH
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+    public init?(rawValue: Swift.String)
+  }
+  public enum PayCardBBPOSErrorType : Swift.Int {
+    case devErrorType_InvalidInput
+    case devErrorType_InvalidInput_NotNumeric
+    case devErrorType_InvalidInput_InputValueOutOfRange
+    case devErrorType_InvalidInput_InvalidDataFormat
+    case devErrorType_InvalidInput_NotAcceptAmountForThisTransactionType
+    case devErrorType_InvalidInput_NotAcceptCashbackForThisTransactionType
+    case devErrorType_Unknown
+    case devErrorType_IllegalStateException
+    case devErrorType_CommError
+    case devErrorType_CommandNotAvailable
+    case devErrorType_DeviceBusy
+    case devErrorType_CommLinkUninitialized
+    case devErrorType_InvalidFunctionInCurrentConnectionMode
+    case devErrorType_AudioFailToStart
+    case devErrorType_AudioFailToStart_OtherAudioIsPlaying
+    case devErrorType_AudioRecordingPermissionDenied
+    case devErrorType_AudioBackgroundTimeout
+    case devErrorType_BTv4NotSupported
+    case devErrorType_BTFailToStart
+    case devErrorType_BTAlreadyConnected
+    case devErrorType_HardwareNotSupported
+    case devErrorType_PCIError
+    case devErrorType_BLESecureConnectionNotSupported
+    case devErrorType_PairingError
+    case devErrorType_PairingError_IncorrectPasskey
+    case devErrorType_PairingError_AlreadyPairedWithAnotherDevice
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+    public init?(rawValue: Swift.Int)
+  }
+  public enum PayCardBBPOSEMVOption : Swift.Int {
+    case emvOption_Start
+    case emvOption_StartWithForceOnline
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum PayCardBBPOSTransactionType : Swift.Int {
+    case devTransactionType_Goods
+    case devTransactionType_Services
+    case devTransactionType_Cashback
+    case devTransactionType_Inquiry
+    case devTransactionType_Transfer
+    case devTransactionType_Payment
+    case devTransactionType_Refund
+    case devTransactionType_Void
+    case devTransactionType_Reversal
+    case devTransactionType_Cash
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum PayCardBBPOSCurrencyChars : Swift.Int {
+    case devCurrencyCharacter_A
+    case devCurrencyCharacter_B
+    case devCurrencyCharacter_C
+    case devCurrencyCharacter_D
+    case devCurrencyCharacter_E
+    case devCurrencyCharacter_F
+    case devCurrencyCharacter_G
+    case devCurrencyCharacter_H
+    case devCurrencyCharacter_I
+    case devCurrencyCharacter_J
+    case devCurrencyCharacter_K
+    case devCurrencyCharacter_L
+    case devCurrencyCharacter_M
+    case devCurrencyCharacter_N
+    case devCurrencyCharacter_O
+    case devCurrencyCharacter_P
+    case devCurrencyCharacter_Q
+    case devCurrencyCharacter_R
+    case devCurrencyCharacter_S
+    case devCurrencyCharacter_T
+    case devCurrencyCharacter_U
+    case devCurrencyCharacter_V
+    case devCurrencyCharacter_W
+    case devCurrencyCharacter_X
+    case devCurrencyCharacter_Y
+    case devCurrencyCharacter_Z
+    case devCurrencyCharacter_Space
+    case devCurrencyCharacter_Dirham
+    case devCurrencyCharacter_Dollar
+    case devCurrencyCharacter_Euro
+    case devCurrencyCharacter_IndianRupee
+    case devCurrencyCharacter_Pound
+    case devCurrencyCharacter_SaudiRiyal
+    case devCurrencyCharacter_SaudiRiyal2
+    case devCurrencyCharacter_Won
+    case devCurrencyCharacter_Yen
+    case devCurrencyCharacter_SlashAndDot
+    case devCurrencyCharacter_Dot
+    case devCurrencyCharacter_Yuan
+    case devCurrencyCharacter_NewShekel
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum PayCardBBPOSCheckCardResult : Swift.Int {
+    case devCheckCardResult_NoCard
+    case devCheckCardResult_InsertedCard
+    case devCheckCardResult_NotIccCard
+    case devCheckCardResult_BadSwipe
+    case devCheckCardResult_SwipedCard
+    case devCheckCardResult_MagHeadFail
+    case devCheckCardResult_UseIccCard
+    case devCheckCardResult_TapCardDetected
+    case devCheckCardResult_ManualPanEntry
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum PayCardBBPOSTransactionResult : Swift.Int {
+    case devTransactionResult_Approved
+    case devTransactionResult_Terminated
+    case devTransactionResult_Declined
+    case devTransactionResult_CanceledOrTimeout
+    case devTransactionResult_CapkFail
+    case devTransactionResult_NotIcc
+    case devTransactionResult_CardBlocked
+    case devTransactionResult_DeviceError
+    case devTransactionResult_SelectApplicationFail
+    case devTransactionResult_CardNotSupported
+    case devTransactionResult_MissingMandatoryData
+    case devTransactionResult_NoEmvApps
+    case devTransactionResult_InvalidIccData
+    case devTransactionResult_ConditionsOfUseNotSatisfied
+    case devTransactionResult_ApplicationBlocked
+    case devTransactionResult_IccCardRemoved
+    case devTransactionResult_CardSchemeNotMatched
+    case devTransactionResult_Canceled
+    case devTransactionResult_Timeout
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc deinit
+}
+public struct CardStatus {
+  public var value: Swift.UInt
+}
+public protocol PayCardMasterDelegate {
+  func didReceiveSwipeSuccess(gateWayData: [Swift.String : Any], cardInfo: [Swift.String : Swift.String?])
+  func didReceiveCardReaderIssue(issueMsg: Swift.String)
+  func didReceiveReaderModeUpdate(currentMode: PayCard.PayCardSharedAttr.PayCardDeviceMode)
+  func requestForHostEMVProcess(gatewayData: [Swift.String : Any], encEMV: Any, emvKSN: Any, encMethod: Swift.String, receiptTags: [Swift.String : Swift.String])
+  func didReceiveFinalEMVBatchData(tlv: Swift.String)
+  func didCompleteEMVCardTransaction(successful: Swift.Bool, transactionMsg: Swift.String?)
+  func didReceiveMessageToDisplay(message: Swift.String)
+  func didReceiveCardSuccess(gateWayData: [Swift.String : Any], cardStatus: PayCard.CardStatus, cardInfo: [Swift.String : Swift.String?])
+  func didReceiveCardIssue(issueMsg: Swift.String, cardStatus: PayCard.CardStatus)
+}
+@objc public class PayCardMaster : ObjectiveC.NSObject, PayCard.TransactionControlBBPOSDelegate, PayCard.TransactionControlIDTCHDelegate {
+  public static let sharedInstance: PayCard.PayCardMaster
+  public var delegate: PayCard.PayCardMasterDelegate?
+  public func doReadCard(withTotalAmt: Swift.Double, withTax: Swift.Double, withTip: Swift.Double, withCurrency: Swift.String, withURL: Swift.String, posMode: PayCard.PayCardSharedAttr.PayCardDeviceMode)
+  public func doReadCard(withTotalAmt: Swift.Double, withTax: Swift.Double, withTip: Swift.Double, withCurrency: Swift.String, withURL: Swift.String, posMode: PayCard.PayCardSharedAttr.PayCardDeviceMode, forDevice: PayCard.PayCardSharedAttr.PayCardSupportedReaders?)
+  public func didWait(checkCardMode: Swift.Int)
+  public func didReturnSevereError(errorMsg: Swift.String)
+  public func didReceiveMessage(deviceMessage: Swift.String)
+  public func didReturnCardResult(cardResult: Swift.Int, cardData: [Swift.AnyHashable : Any]!)
+  public func doDetermineCardType(maskedPAN: Swift.String) -> Swift.String
+  public func didRequestFinalConfirm()
+  public func doCardConfirm(confirmed: Swift.Bool)
+  public func didRequestOnlineProcess(tlv: Swift.String!, cardData: [Swift.AnyHashable : Any]?)
+  public func responseFromHostEMVProcess(tag8AAuthCode: Any?, tag91AuthData: Any?, tag71Script1: Any?, tag72Script2: Any?)
+  public func didReturnBatchData(tlv: Swift.String)
+  public func didReturnTxnResult(txnResult: Swift.Int)
+  public func doDecodeTLV(tlv: Swift.String) -> [Swift.AnyHashable : Any]?
+  public func doEncodeTLV(tagsNvalues: [Swift.AnyHashable : Any]) -> Swift.String?
+  public func didReturnTxnError(errorType: Swift.Int, errorMessage: Swift.String)
+  public func didReturnDeviceInfo(forTxn: [Swift.AnyHashable : Any]!)
+  public func didReturnNoDeviceInfo()
+  @objc deinit
+}
+extension PayCardMasterDelegate {
+  public func didReceiveSwipeSuccess(gateWayData: [Swift.String : Any], cardInfo: [Swift.String : Swift.String?])
+  public func didReceiveCardReaderIssue(issueMsg: Swift.String)
+  public func didReceiveReaderModeUpdate(currentMode: PayCard.PayCardSharedAttr.PayCardDeviceMode)
+  public func requestForHostEMVProcess(gatewayData: [Swift.String : Any], encEMV: Any, emvKSN: Any, encMethod: Swift.String, receiptTags: [Swift.String : Swift.String])
+  public func didReceiveFinalEMVBatchData(tlv: Swift.String)
+  public func didCompleteEMVCardTransaction(successful: Swift.Bool, transactionMsg: Swift.String?)
+  public func didReceiveMessageToDisplay(message: Swift.String)
+  public func didReceiveCardSuccess(gateWayData: [Swift.String : Any], cardStatus: PayCard.CardStatus, cardInfo: [Swift.String : Swift.String?])
+  public func didReceiveCardIssue(issueMsg: Swift.String, cardStatus: PayCard.CardStatus)
+}
+@objc public class PDeviceLoader : ObjectiveC.NSObject {
+  public func loadCardReaderDriver(forManfg: PayCard.PayCardSharedAttr.PayCardSupportedReaders) -> (PayCard.PayCardSharedAttr.PayCardSupportedReaders?, Any?, Any?)
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol DeviceControlBBPOSDelegate {
+  func didBTConnect()
+  func didBTDisconnect()
+  func didBTTimeout()
+  func didReturnDeviceData(deviceInfo: [Swift.AnyHashable : Any]!)
+  func didReturnDevError(errorType: Swift.Int, errorMessage: Swift.String)
+}
+@objc public class DeviceControllerBBPOS : ObjectiveC.NSObject, PayCard.BBDeviceControllerDelegate {
+  public static let sharedInstance: PayCard.DeviceControllerBBPOS
+  public var delegate: PayCard.DeviceControlBBPOSDelegate?
+  public typealias DeviceControllerDelegate = PayCard.DeviceControlBBPOSDelegate
+  public func loadDynamicDeviceDriver()
+  public func connectBTReader(useNumber: Swift.String)
+  public func scanForReaders()
+  public func stopScan()
+  @objc public func onBTReturnScanResults(_ devices: [Any]!)
+  @objc public func onBTConnected(_ connectedDevice: ObjectiveC.NSObject!)
+  @objc public func onBTScanTimeout()
+  public func disconnectBTReader()
+  @objc public func onBTDisconnected()
+  public func connectAudioReader() -> Swift.Bool
+  public func disconnectAudioReader()
+  public func detectConnectionType() -> PayCard.SharedDriverAttr.PayCardDevConnectMode
+  public func getDeviceData()
+  @objc public func onReturnDeviceInfo(_ deviceInfo: [Swift.AnyHashable : Any]!)
+  @objc public func onError(_ errorType: PayCard.BBDeviceErrorType, errorMessage: Swift.String)
+  @objc deinit
+}
+@objc public class SharedDriverAttr : ObjectiveC.NSObject {
+  public enum industryEntryMode : Swift.String {
+    case read_Unknown
+    case read_Manual_Entry
+    case read_MagneticStrip
+    case read_BarCode
+    case read_OCR
+    case read_EMV_ChipCard
+    case read_Contactless_EMV
+    case read_Fallback_Magnetic
+    case read_MagneticStripFromTrack2
+    case read_ContactlessMagneticStrip
+    case read_ICCNoCVV
+    case read_SameAsOriginal
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+    public init?(rawValue: Swift.String)
+  }
+  public enum PayCardDevConnectMode : Swift.Int {
+    case devConnection_None
+    case devConnection_Audio
+    case devConnection_Bluetooth
+    case devConnection_USB
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+    public init?(rawValue: Swift.Int)
+  }
+  public enum PayCardEMVOption : Swift.Int {
+    case emvOption_Start
+    case emvOption_StartWithForceOnline
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum PayCardTransactionType : Swift.Int {
+    case devTransactionType_Goods
+    case devTransactionType_Services
+    case devTransactionType_Cashback
+    case devTransactionType_Inquiry
+    case devTransactionType_Transfer
+    case devTransactionType_Payment
+    case devTransactionType_Refund
+    case devTransactionType_Void
+    case devTransactionType_Reversal
+    case devTransactionType_Cash
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum PayCardCurrencyChars : Swift.Int {
+    case devCurrencyCharacter_A
+    case devCurrencyCharacter_B
+    case devCurrencyCharacter_C
+    case devCurrencyCharacter_D
+    case devCurrencyCharacter_E
+    case devCurrencyCharacter_F
+    case devCurrencyCharacter_G
+    case devCurrencyCharacter_H
+    case devCurrencyCharacter_I
+    case devCurrencyCharacter_J
+    case devCurrencyCharacter_K
+    case devCurrencyCharacter_L
+    case devCurrencyCharacter_M
+    case devCurrencyCharacter_N
+    case devCurrencyCharacter_O
+    case devCurrencyCharacter_P
+    case devCurrencyCharacter_Q
+    case devCurrencyCharacter_R
+    case devCurrencyCharacter_S
+    case devCurrencyCharacter_T
+    case devCurrencyCharacter_U
+    case devCurrencyCharacter_V
+    case devCurrencyCharacter_W
+    case devCurrencyCharacter_X
+    case devCurrencyCharacter_Y
+    case devCurrencyCharacter_Z
+    case devCurrencyCharacter_Space
+    case devCurrencyCharacter_Dirham
+    case devCurrencyCharacter_Dollar
+    case devCurrencyCharacter_Euro
+    case devCurrencyCharacter_IndianRupee
+    case devCurrencyCharacter_Pound
+    case devCurrencyCharacter_SaudiRiyal
+    case devCurrencyCharacter_SaudiRiyal2
+    case devCurrencyCharacter_Won
+    case devCurrencyCharacter_Yen
+    case devCurrencyCharacter_SlashAndDot
+    case devCurrencyCharacter_Dot
+    case devCurrencyCharacter_Yuan
+    case devCurrencyCharacter_NewShekel
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum PayCardCheckCardResult : Swift.Int {
+    case devCheckCardResult_NoCard
+    case devCheckCardResult_InsertedCard
+    case devCheckCardResult_NotIccCard
+    case devCheckCardResult_BadSwipe
+    case devCheckCardResult_SwipedCard
+    case devCheckCardResult_MagHeadFail
+    case devCheckCardResult_UseIccCard
+    case devCheckCardResult_TapCardDetected
+    case devCheckCardResult_ManualPanEntry
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+    public init?(rawValue: Swift.Int)
+  }
+  public enum PayCardTransactionResult : Swift.Int {
+    case devTransactionResult_Approved
+    case devTransactionResult_Terminated
+    case devTransactionResult_Declined
+    case devTransactionResult_CanceledOrTimeout
+    case devTransactionResult_CapkFail
+    case devTransactionResult_NotIcc
+    case devTransactionResult_CardBlocked
+    case devTransactionResult_DeviceError
+    case devTransactionResult_SelectApplicationFail
+    case devTransactionResult_CardNotSupported
+    case devTransactionResult_MissingMandatoryData
+    case devTransactionResult_NoEmvApps
+    case devTransactionResult_InvalidIccData
+    case devTransactionResult_ConditionsOfUseNotSatisfied
+    case devTransactionResult_ApplicationBlocked
+    case devTransactionResult_IccCardRemoved
+    case devTransactionResult_CardSchemeNotMatched
+    case devTransactionResult_Canceled
+    case devTransactionResult_Timeout
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+    public init?(rawValue: Swift.Int)
+  }
+  public enum PayCardErrorType : Swift.Int {
+    case devErrorType_InvalidInput
+    case devErrorType_InvalidInput_NotNumeric
+    case devErrorType_InvalidInput_InputValueOutOfRange
+    case devErrorType_InvalidInput_InvalidDataFormat
+    case devErrorType_InvalidInput_NotAcceptAmountForThisTransactionType
+    case devErrorType_InvalidInput_NotAcceptCashbackForThisTransactionType
+    case devErrorType_Unknown
+    case devErrorType_IllegalStateException
+    case devErrorType_CommError
+    case devErrorType_CommandNotAvailable
+    case devErrorType_DeviceBusy
+    case devErrorType_CommLinkUninitialized
+    case devErrorType_InvalidFunctionInCurrentConnectionMode
+    case devErrorType_AudioFailToStart
+    case devErrorType_AudioFailToStart_OtherAudioIsPlaying
+    case devErrorType_AudioRecordingPermissionDenied
+    case devErrorType_AudioBackgroundTimeout
+    case devErrorType_BTv4NotSupported
+    case devErrorType_BTFailToStart
+    case devErrorType_BTAlreadyConnected
+    case devErrorType_HardwareNotSupported
+    case devErrorType_PCIError
+    case devErrorType_BLESecureConnectionNotSupported
+    case devErrorType_PairingError
+    case devErrorType_PairingError_IncorrectPasskey
+    case devErrorType_PairingError_AlreadyPairedWithAnotherDevice
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public enum PayCardDeviceMode : Swift.Int {
+    case cardDeviceMode_Swipe
+    case cardDeviceMode_Insert
+    case cardDeviceMode_Tap
+    case cardDeviceMode_SwipeOrInsert
+    case cardDeviceMode_SwipeOrTap
+    case cardDeviceMode_SwipeOrInsertOrTap
+    case cardDeviceMode_InsertOrTap
+    case cardDeviceMode_ManualEntry
+    case cardDeviceMode_QRCode
+    case cardDeviceMode_InsertNotSwipe
+    case cardDeviceMode_Confirm
+    case cardDeviceMode_Unknown
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+    public init?(rawValue: Swift.Int)
+  }
+  public static let devBBPOS_Messages: [Swift.String]
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension PayCard.PayCardSharedAttr.PayCardConnectMode : Swift.Equatable {}
+extension PayCard.PayCardSharedAttr.PayCardConnectMode : Swift.Hashable {}
+extension PayCard.PayCardSharedAttr.PayCardConnectMode : Swift.RawRepresentable {}
+extension PayCard.PayCardSharedAttr.readerEntryMode : Swift.Equatable {}
+extension PayCard.PayCardSharedAttr.readerEntryMode : Swift.Hashable {}
+extension PayCard.PayCardSharedAttr.readerEntryMode : Swift.RawRepresentable {}
+extension PayCard.PayCardSharedAttr.industryPOSEntryMode : Swift.Equatable {}
+extension PayCard.PayCardSharedAttr.industryPOSEntryMode : Swift.Hashable {}
+extension PayCard.PayCardSharedAttr.industryPOSEntryMode : Swift.RawRepresentable {}
+extension PayCard.PayCardSharedAttr.PayCardDeviceMode : Swift.Equatable {}
+extension PayCard.PayCardSharedAttr.PayCardDeviceMode : Swift.Hashable {}
+extension PayCard.PayCardSharedAttr.PayCardDeviceMode : Swift.RawRepresentable {}
+extension PayCard.PayCardSharedAttr.PayCardSupportedReaders : Swift.Hashable {}
+extension PayCard.PayCardSharedAttr.PayCardSupportedReaders : Swift.RawRepresentable {}
+extension PayCard.PayCardSharedAttr.PayCardReaderUUID : Swift.Equatable {}
+extension PayCard.PayCardSharedAttr.PayCardReaderUUID : Swift.Hashable {}
+extension PayCard.PayCardSharedAttr.PayCardReaderUUID : Swift.RawRepresentable {}
+extension PayCard.PayCardSharedAttr.PayCardBBPOSErrorType : Swift.Equatable {}
+extension PayCard.PayCardSharedAttr.PayCardBBPOSErrorType : Swift.Hashable {}
+extension PayCard.PayCardSharedAttr.PayCardBBPOSErrorType : Swift.RawRepresentable {}
+extension PayCard.PayCardSharedAttr.PayCardBBPOSEMVOption : Swift.Equatable {}
+extension PayCard.PayCardSharedAttr.PayCardBBPOSEMVOption : Swift.Hashable {}
+extension PayCard.PayCardSharedAttr.PayCardBBPOSEMVOption : Swift.RawRepresentable {}
+extension PayCard.PayCardSharedAttr.PayCardBBPOSTransactionType : Swift.Equatable {}
+extension PayCard.PayCardSharedAttr.PayCardBBPOSTransactionType : Swift.Hashable {}
+extension PayCard.PayCardSharedAttr.PayCardBBPOSTransactionType : Swift.RawRepresentable {}
+extension PayCard.PayCardSharedAttr.PayCardBBPOSCurrencyChars : Swift.Equatable {}
+extension PayCard.PayCardSharedAttr.PayCardBBPOSCurrencyChars : Swift.Hashable {}
+extension PayCard.PayCardSharedAttr.PayCardBBPOSCurrencyChars : Swift.RawRepresentable {}
+extension PayCard.PayCardSharedAttr.PayCardBBPOSCheckCardResult : Swift.Equatable {}
+extension PayCard.PayCardSharedAttr.PayCardBBPOSCheckCardResult : Swift.Hashable {}
+extension PayCard.PayCardSharedAttr.PayCardBBPOSCheckCardResult : Swift.RawRepresentable {}
+extension PayCard.PayCardSharedAttr.PayCardBBPOSTransactionResult : Swift.Equatable {}
+extension PayCard.PayCardSharedAttr.PayCardBBPOSTransactionResult : Swift.Hashable {}
+extension PayCard.PayCardSharedAttr.PayCardBBPOSTransactionResult : Swift.RawRepresentable {}
+extension PayCard.SharedDriverAttr.industryEntryMode : Swift.Equatable {}
+extension PayCard.SharedDriverAttr.industryEntryMode : Swift.Hashable {}
+extension PayCard.SharedDriverAttr.industryEntryMode : Swift.RawRepresentable {}
+extension PayCard.SharedDriverAttr.PayCardDevConnectMode : Swift.Equatable {}
+extension PayCard.SharedDriverAttr.PayCardDevConnectMode : Swift.Hashable {}
+extension PayCard.SharedDriverAttr.PayCardDevConnectMode : Swift.RawRepresentable {}
+extension PayCard.SharedDriverAttr.PayCardEMVOption : Swift.Equatable {}
+extension PayCard.SharedDriverAttr.PayCardEMVOption : Swift.Hashable {}
+extension PayCard.SharedDriverAttr.PayCardEMVOption : Swift.RawRepresentable {}
+extension PayCard.SharedDriverAttr.PayCardTransactionType : Swift.Equatable {}
+extension PayCard.SharedDriverAttr.PayCardTransactionType : Swift.Hashable {}
+extension PayCard.SharedDriverAttr.PayCardTransactionType : Swift.RawRepresentable {}
+extension PayCard.SharedDriverAttr.PayCardCurrencyChars : Swift.Equatable {}
+extension PayCard.SharedDriverAttr.PayCardCurrencyChars : Swift.Hashable {}
+extension PayCard.SharedDriverAttr.PayCardCurrencyChars : Swift.RawRepresentable {}
+extension PayCard.SharedDriverAttr.PayCardCheckCardResult : Swift.Equatable {}
+extension PayCard.SharedDriverAttr.PayCardCheckCardResult : Swift.Hashable {}
+extension PayCard.SharedDriverAttr.PayCardCheckCardResult : Swift.RawRepresentable {}
+extension PayCard.SharedDriverAttr.PayCardTransactionResult : Swift.Equatable {}
+extension PayCard.SharedDriverAttr.PayCardTransactionResult : Swift.Hashable {}
+extension PayCard.SharedDriverAttr.PayCardTransactionResult : Swift.RawRepresentable {}
+extension PayCard.SharedDriverAttr.PayCardErrorType : Swift.Equatable {}
+extension PayCard.SharedDriverAttr.PayCardErrorType : Swift.Hashable {}
+extension PayCard.SharedDriverAttr.PayCardErrorType : Swift.RawRepresentable {}
+extension PayCard.SharedDriverAttr.PayCardDeviceMode : Swift.Equatable {}
+extension PayCard.SharedDriverAttr.PayCardDeviceMode : Swift.Hashable {}
+extension PayCard.SharedDriverAttr.PayCardDeviceMode : Swift.RawRepresentable {}
