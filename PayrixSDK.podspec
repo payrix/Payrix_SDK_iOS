@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
 
   #
 
-  s.source       = { :git => "https://gitlab.com/payrix/mobile/payrix_mobile_sdk.git", :tag => s.version }
+  s.source       = { :git => "https://github.com/payrix/Payrix_SDK_iOS", :tag => s.version }
   s.ios.deployment_target = '12.0'
   s.ios.vendored_frameworks = "PayrixSDK/PayCore.framework", "PayrixSDK/PayCard.framework"
 
