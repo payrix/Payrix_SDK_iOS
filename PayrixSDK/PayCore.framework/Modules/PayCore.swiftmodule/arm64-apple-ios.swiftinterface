@@ -1,0 +1,849 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.1 (swiftlang-1100.0.270.13 clang-1100.0.33.7)
+// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name PayCore
+import Foundation
+@_exported import PayCore
+import Swift
+import UIKit
+public struct PayCoreError : Swift.Decodable {
+  public let code: Swift.Int?
+  public let severity: Swift.Int?
+  public let message: Swift.String?
+  public let field: Swift.String?
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct PayCoreSearchParameter {
+  public enum PayCoreSearchFunction : Swift.String {
+    case sort
+    case equals
+    case exact
+    case less
+    case greater
+    case like
+    case `in`
+    public typealias RawValue = Swift.String
+    public init?(rawValue: Swift.String)
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public var propertyName: Swift.String
+  public var searchFunction: PayCore.PayCoreSearchParameter.PayCoreSearchFunction
+  public var parameterValue: Swift.String
+  public init(_ propertyName: Swift.String, _ searchFunction: PayCore.PayCoreSearchParameter.PayCoreSearchFunction, _ parameterValue: Swift.String)
+}
+public struct CoreStatus {
+  public var value: Swift.UInt
+}
+public let waitingForSwipe: PayCore.CoreStatus
+public let transactionTimeout: PayCore.CoreStatus
+public let swipeCompleted: PayCore.CoreStatus
+public let transactionSuccessful: PayCore.CoreStatus
+public let transactionFailed: PayCore.CoreStatus
+public let swiperDisconnected: PayCore.CoreStatus
+public let transactionCancelled: PayCore.CoreStatus
+public let cardReaderNotConnected: PayCore.CoreStatus
+public let swiperUnResponsive: PayCore.CoreStatus
+public let transactionProcessing: PayCore.CoreStatus
+public protocol PayCoreRDRTransMgrDelegate {
+  func didReceiveTransactionSuccess(response: PayCore.PayCoreTransResponse, coreStatus: PayCore.CoreStatus)
+  func didReceiveTransactionFailed(response: PayCore.PayCoreTransResponse, theErrors: [Swift.String], coreStatus: PayCore.CoreStatus)
+}
+@objc public class PayCoreRDRTransMgr : ObjectiveC.NSObject {
+  public static let sharedInstance: PayCore.PayCoreRDRTransMgr
+  public var delegate: PayCore.PayCoreRDRTransMgrDelegate?
+  public func doCardRDRTransaction(withGatewayDict: [Swift.String : Any], withSessionKey: Swift.String, withURL: Swift.String)
+  @objc deinit
+}
+@objc public class PayCoreJournal : ObjectiveC.NSObject {
+  public static let sharedInstance: PayCore.PayCoreJournal
+  public func logToConsole(inSource: Swift.AnyObject, inMessage: Swift.String)
+  @objc deinit
+}
+public enum PayCoreCCType : Swift.Int {
+  case AmericanExpress
+  case Visa
+  case MasterCard
+  case DinersClub
+  case Discover
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum PayCoreAccountMethod : Swift.Int, Swift.Codable {
+  case checkingAccount
+  case savingsAccount
+  case corporateCheckingAccount
+  case corporateSavingsAccount
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public class PayCoreAccountDetails : Swift.Codable {
+  public var method: PayCore.PayCoreAccountMethod?
+  public var number: Swift.String?
+  public var routing: Swift.String?
+  public init()
+  required public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+}
+public enum PayCoreAccountStatus : Swift.Int, Swift.Decodable {
+  case notReady
+  case ready
+  case challenged
+  case verified
+  case manual
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public class PayCoreAccount : PayCore.PayCoreBase, PayCore.PayCoreResource {
+  public typealias Model = PayCore.PayCoreAccount
+  final public let methodPath: Swift.String
+  public var entity: PayCore.PayCoreEntity?
+  public var account: PayCore.PayCoreAccountDetails?
+  public var token: Swift.String?
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public var primary: Swift.Bool?
+  public var status: PayCore.PayCoreAccountStatus?
+  public var currency: Swift.String?
+  public var inactive: Swift.Bool?
+  public var frozen: Swift.Bool?
+  override public init()
+  public init(id: Swift.String)
+  required public init(from decoder: Swift.Decoder) throws
+  override public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+}
+public class PayCoreMember : PayCore.PayCoreBase, PayCore.PayCoreResource {
+  public typealias Model = PayCore.PayCoreMember
+  final public let methodPath: Swift.String
+  public var merchant: PayCore.PayCoreMerchant?
+  public var title: Swift.String?
+  public var first: Swift.String?
+  public var middle: Swift.String?
+  public var last: Swift.String?
+  public var ssn: Swift.String?
+  public var dob: Swift.Int?
+  public var dl: Swift.String?
+  public var dlstate: Swift.String?
+  public var ownership: Swift.Int?
+  public var email: Swift.String?
+  public var fax: Swift.String?
+  public var phone: Swift.String?
+  public var address1: Swift.String?
+  public var address2: Swift.String?
+  public var city: Swift.String?
+  public var state: Swift.String?
+  public var zip: Swift.String?
+  public var country: Swift.String?
+  public var primary: Swift.Bool?
+  public var inactive: Swift.Bool?
+  public var frozen: Swift.Bool?
+  override public init()
+  public init(id: Swift.String)
+  required public init(from decoder: Swift.Decoder) throws
+  override public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+}
+public func PayCoreSetKeys(apiKey: Swift.String?, sessionKey: Swift.String?)
+public func PayCoreGetApiKey() -> Swift.String
+public func PayCoreSetApiKey(_ key: Swift.String)
+public func PayCoreGetSessionKey() -> Swift.String
+public func PayCoreSetSessionKey(_ key: Swift.String)
+public func PayCoreGetTestMode() -> Swift.Bool
+public func PayCoreSetTestMode(_ mode: Swift.Bool)
+public func PayCoreGetAPIURL() -> Swift.String
+public func PayCoreGetAPIHostname() -> Swift.String
+public func PayCoreSetAPIHostname(_ host: Swift.String)
+public enum PayCorePaymentMethod : Swift.Int, Swift.Decodable {
+  case AmericanExpress
+  case Visa
+  case MasterCard
+  case DinersClub
+  case Discover
+  case CheckingAccount
+  case SavingsAccount
+  case CorporateCheckingAccount
+  case CorporateSavingsAccount
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public class PayCorePayment : PayCore.PayCoreBase, PayCore.PayCoreResource {
+  public typealias Model = PayCore.PayCorePayment
+  final public let methodPath: Swift.String
+  public var method: PayCore.PayCorePaymentMethod?
+  public var number: Swift.String?
+  public var routing: Swift.String?
+  public var cvv: Swift.Int?
+  public var track: Swift.String?
+  public var ksn: Swift.String?
+  public var encrypted: Swift.String?
+  public var emv: Swift.String?
+  override public init()
+  public init(id: Swift.String)
+  required public init(from decoder: Swift.Decoder) throws
+  override public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+}
+public enum PayCoreEntityType : Swift.Int, Swift.Codable {
+  case soleProprietor
+  case corporation
+  case limitedLiabilityCompany
+  case partnership
+  case association
+  case nonProfitOrganization
+  case governmentOrganization
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public class PayCoreEntity : PayCore.PayCoreBase, PayCore.PayCoreResource {
+  public typealias Model = PayCore.PayCoreEntity
+  final public let methodPath: Swift.String
+  public var ipCreated: Swift.String?
+  public var ipModified: Swift.String?
+  public var clientIp: Swift.String?
+  public var login: PayCore.PayCoreLogin?
+  public var parameter: Swift.String?
+  public var type: PayCore.PayCoreEntityType?
+  public var name: Swift.String?
+  public var address1: Swift.String?
+  public var address2: Swift.String?
+  public var city: Swift.String?
+  public var state: Swift.String?
+  public var zip: Swift.String?
+  public var country: Swift.String?
+  public var timezone: Swift.Int?
+  public var phone: Swift.String?
+  public var fax: Swift.String?
+  public var email: Swift.String?
+  public var website: Swift.String?
+  public var ein: Swift.String?
+  public var tcVersion: Swift.String?
+  public var tcDate: Foundation.Date?
+  public var tcIp: Swift.String?
+  public var tcAcceptDate: Swift.Int?
+  public var tcAcceptIp: Swift.String?
+  public var currency: Swift.String?
+  public var custom: Swift.String?
+  public var inactive: Swift.Bool?
+  public var frozen: Swift.Bool?
+  override public init()
+  public init(id: Swift.String)
+  required public init(from decoder: Swift.Decoder) throws
+  override public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+}
+@objc public class PayCoreMaster : ObjectiveC.NSObject {
+  public static let sharedInstance: PayCore.PayCoreMaster
+  public func validateLoginCredentials(userName: Swift.String, password: Swift.String, completion: @escaping (Swift.Bool, Swift.String?) -> Swift.Void)
+  public func verifySessionKey(sessionKey: Swift.String, completion: @escaping (Swift.Bool) -> Swift.Void)
+  public func getMerchantId(sessionKey: Swift.String, completion: @escaping (Swift.Bool, Swift.String?, Swift.String?) -> Swift.Void)
+  public func processTransaction(merchantID: Swift.String, sessionKey: Swift.String?, amount: Swift.Double?, taxPercent: Swift.Double?, tipPercent: Swift.Int?, tipAmt: Swift.Double?, calcTotAmt: Swift.Double?, ccName: Swift.String?, ccNumber: Swift.String?, ccCardType: PayCore.PayCoreCCType?, ccCVV: Swift.String?, ccExp: Swift.String?, ccOrigin: PayCore.PayCoreTxnOrigin?, zip: Swift.String?, completion: @escaping (Swift.Bool, Swift.String?, Swift.String?, [Swift.String]?) -> Swift.Void)
+  public func addSignatureToTransaction(transactionID: Swift.String?, signatureBase64Enc: Swift.String?, sessionKey: Swift.String?, completion: @escaping (Swift.Bool, [Swift.String]?) -> Swift.Void)
+  public func retrieveTransactionsFor(merchantID: Swift.String, onPage: Swift.Int, recordsPerPage: Swift.Int, completion: @escaping ([PayCore.PayCoreTxn]?, PayCore.PayCoreResponseDetails?, [PayCore.PayCoreError]?) -> Swift.Void)
+  public func processRefund(merchantID: Swift.String, sessionKey: Swift.String?, refundAmount: Swift.Double?, originalTransaction: PayCore.PayCoreTxn, completion: @escaping (Swift.Bool, PayCore.PayCoreTxn?, [Swift.String]?) -> Swift.Void)
+  public func retrieveSubsequentTransactionsFor(merchantID: Swift.String, sessionKey: Swift.String?, originalTransaction: PayCore.PayCoreTxn, completion: @escaping ([PayCore.PayCoreTxn]?, PayCore.PayCoreResponseDetails?, [PayCore.PayCoreError]?) -> Swift.Void)
+  public func retrieveChargebacksFor(originalTransaction: PayCore.PayCoreTxn, completion: @escaping ([PayCore.PayCoreChargeback]?, PayCore.PayCoreResponseDetails?, [PayCore.PayCoreError]?) -> Swift.Void)
+  public func checkTXNRefundEligible(sessionKey: Swift.String, originalTxn: PayCore.PayCoreTxn, completion: @escaping (Swift.Bool) -> Swift.Void)
+  @objc deinit
+}
+public class PayCoreSampleModelObject : PayCore.PayCoreBase, PayCore.PayCoreResource {
+  public typealias Model = PayCore.PayCoreSampleModelObject
+  final public let methodPath: Swift.String
+  public var CHANGEME: Swift.String?
+  override public init()
+  public init(id: Swift.String)
+  required public init(from decoder: Swift.Decoder) throws
+  override public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+}
+public class PayCoreFund : PayCore.PayCoreBase, PayCore.PayCoreResource {
+  public typealias Model = PayCore.PayCoreFund
+  final public let methodPath: Swift.String
+  public var entity: PayCore.PayCoreEntity?
+  public var currency: Swift.String?
+  public var reserved: Swift.Int?
+  public var pending: Swift.String?
+  public var available: Swift.Int?
+  public var total: Swift.Int?
+  public var inactive: Swift.Bool?
+  public var frozen: Swift.Bool?
+  override public init()
+  public init(id: Swift.String)
+  required public init(from decoder: Swift.Decoder) throws
+  override public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+}
+public enum PayCoreMerchantStatus : Swift.Int, Swift.Codable {
+  case notReady
+  case ready
+  case boarded
+  case manual
+  case denied
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum PayCoreTaxIDStatus : Swift.Int, Swift.Codable {
+  case pending
+  case valid
+  case invalid
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public class PayCoreMerchant : PayCore.PayCoreBase, PayCore.PayCoreResource {
+  public typealias Model = PayCore.PayCoreMerchant
+  final public let methodPath: Swift.String
+  public var lastActivity: Foundation.Date?
+  public var entity: PayCore.PayCoreEntity?
+  public var dba: Swift.String?
+  public var new: Swift.Bool?
+  public var established: Swift.Int?
+  public var annualCCSales: Swift.Int?
+  public var avgTicket: Swift.Int?
+  public var amex: Swift.String?
+  public var discover: Swift.String?
+  public var mcc: Swift.String?
+  public var status: PayCore.PayCoreMerchantStatus?
+  public var boarded: Swift.Int?
+  public var tnStatus: PayCore.PayCoreTaxIDStatus?
+  public var tcVersion: Swift.Int?
+  public var inactive: Swift.Bool?
+  public var frozen: Swift.Bool?
+  override public init()
+  public init(id: Swift.String)
+  required public init(from decoder: Swift.Decoder) throws
+  override public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+}
+public enum PayCoreChargebackDisputeState : Swift.String, Swift.Decodable {
+  case retrieval
+  case first
+  case arbitration
+  case reversal
+  case representment
+  case preArbitration
+  case arbitrationLost
+  case arbitrationSplit
+  case arbitrationWon
+  case issuerAcceptPreArbitration
+  case issuerDeclinedPreArbitration
+  case responseToIssuerPreArbitration
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public class PayCoreChargeback : PayCore.PayCoreBase, PayCore.PayCoreResource {
+  public typealias Model = PayCore.PayCoreChargeback
+  final public let methodPath: Swift.String
+  public var merchant: PayCore.PayCoreMerchant?
+  public var txn: PayCore.PayCoreTxn?
+  public var mid: Swift.String?
+  public var description: Swift.String?
+  public var total: Swift.Int?
+  public var representedTotal: Swift.Int?
+  public var cycle: Swift.String?
+  public var currency: Swift.String?
+  public var platform: Swift.String?
+  public var ref: Swift.String?
+  public var reason: Swift.String?
+  public var reasonCode: Swift.String?
+  public var issued: Swift.Int?
+  public var received: Swift.Int?
+  public var reply: Swift.Int?
+  public var bankRef: Swift.String?
+  public var chargebackRef: Swift.String?
+  public var status: Swift.String?
+  public var lastStatusChange: Swift.String?
+  public var inactive: Swift.Bool?
+  public var frozen: Swift.Bool?
+  override public init()
+  public init(id: Swift.String)
+  required public init(from decoder: Swift.Decoder) throws
+  override public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+}
+public class PayCoreLogin : PayCore.PayCoreBase, PayCore.PayCoreResource {
+  public typealias Model = PayCore.PayCoreLogin
+  final public let methodPath: Swift.String
+  public var login: PayCore.PayCoreLogin?
+  public var lastLogin: Foundation.Date?
+  public var username: Swift.String?
+  public var password: Swift.String?
+  public var first: Swift.String?
+  public var middle: Swift.String?
+  public var last: Swift.String?
+  public var email: Swift.String?
+  public var fax: Swift.String?
+  public var phone: Swift.String?
+  public var country: Swift.String?
+  public var zip: Swift.String?
+  public var state: Swift.String?
+  public var city: Swift.String?
+  public var address1: Swift.String?
+  public var address2: Swift.String?
+  public var confirmed: Swift.Bool?
+  public var roles: Swift.Int?
+  public var division: Swift.String?
+  public var inactive: Swift.Bool?
+  public var frozen: Swift.Bool?
+  override public init()
+  public init(id: Swift.String)
+  required public init(from decoder: Swift.Decoder) throws
+  override public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+}
+public class PayCoreTxnData : PayCore.PayCoreBase, PayCore.PayCoreResource {
+  public typealias Model = PayCore.PayCoreTxnData
+  final public let methodPath: Swift.String
+  public var txn: PayCore.PayCoreTxn?
+  public var signature: Swift.String?
+  override public init()
+  public init(id: Swift.String)
+  required public init(from decoder: Swift.Decoder) throws
+  override public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+}
+public class PayCoreSubscription : PayCore.PayCoreBase, PayCore.PayCoreResource {
+  public typealias Model = PayCore.PayCoreSubscription
+  final public let methodPath: Swift.String
+  public var plan: PayCore.PayCorePlan?
+  public var start: Swift.Int?
+  public var finish: Swift.Int?
+  public var tax: Swift.Int?
+  public var descriptor: Swift.String?
+  public var inactive: Swift.Bool?
+  public var frozen: Swift.Bool?
+  override public init()
+  public init(id: Swift.String)
+  required public init(from decoder: Swift.Decoder) throws
+  override public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+}
+public class PayCoreResponseDetailsPage : Swift.Decodable {
+  public var current: Swift.Int?
+  public var last: Swift.Int?
+  @objc deinit
+  required public init(from decoder: Swift.Decoder) throws
+}
+public class PayCoreResponseDetails : Swift.Decodable {
+  public var requestID: Swift.String?
+  public var page: PayCore.PayCoreResponseDetailsPage?
+  required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
+}
+public enum PayCoreTxnType : Swift.Int, Swift.Decodable {
+  case saleTransaction
+  case authTransaction
+  case captureTransaction
+  case reverseAuthorization
+  case refundTransaction
+  case echeckSaleTransaction
+  case eCheckRefundTransaction
+  case echeckPreSaleTransaction
+  case echeckPreRefundTransaction
+  case echeckRedepositTransaction
+  case echeckAccountVerificationTransaction
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+}
+public enum PayCoreTxnOrigin : Swift.Int, Swift.Decodable {
+  case creditCardTerminal
+  case eCommerceSystem
+  case mailOrderOrTelephoneOrder
+  case applePay
+  case txn3DSecureAuthorized
+  case txn3DSecure
+  case recurringTxnOnCard
+  case payframe
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum PayCoreTxnStatus : Swift.Int, Swift.Decodable {
+  case pending
+  case approved
+  case failed
+  case captured
+  case settled
+  case returned
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+  public init?(rawValue: Swift.Int)
+}
+public enum PayCoreTxnReserved : Swift.Int, Swift.Decodable {
+  case notReserved
+  case blockCapture
+  case manualOverride
+  case moveIntoReserve
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public class PayCoreTxn : PayCore.PayCoreBase, PayCore.PayCoreResource {
+  public typealias Model = PayCore.PayCoreTxn
+  final public let methodPath: Swift.String
+  public var ipCreated: Swift.String?
+  public var ipModified: Swift.String?
+  public var merchant: PayCore.PayCoreMerchant?
+  public var token: Swift.String?
+  public var fortxn: PayCore.PayCoreTxn?
+  public var fromtxn: PayCore.PayCoreTxn?
+  public var batch: PayCore.PayCoreBatch?
+  public var subscription: PayCore.PayCoreSubscription?
+  public var type: PayCore.PayCoreTxnType?
+  public var expiration: Swift.String?
+  public var currency: Swift.String?
+  public var authDate: Swift.Int?
+  public var authCode: Swift.String?
+  public var captured: Foundation.Date?
+  public var settled: Swift.Int?
+  public var settledCurrency: Swift.String?
+  public var settledTotal: Swift.Int?
+  public var allowPartial: Swift.Bool?
+  public var order: Swift.String?
+  public var description: Swift.String?
+  public var descriptor: Swift.String?
+  public var terminal: Swift.String?
+  public var terminalCapability: Swift.String?
+  public var entryMode: Swift.String?
+  public var origin: PayCore.PayCoreTxnOrigin?
+  public var tax: Swift.Int?
+  public var total: Swift.Int?
+  public var cashback: Swift.Int?
+  public var authorization: Swift.String?
+  public var approved: Swift.Int?
+  public var cvv: Swift.Bool?
+  public var swiped: Swift.Bool?
+  public var emv: Swift.Bool?
+  public var signature: Swift.Bool?
+  public var txnData: PayCore.PayCoreTxnData?
+  public var payment: PayCore.PayCorePayment?
+  public var unattended: Swift.Bool?
+  public var clientIp: Swift.String?
+  public var first: Swift.String?
+  public var middle: Swift.String?
+  public var last: Swift.String?
+  public var company: Swift.String?
+  public var email: Swift.String?
+  public var address1: Swift.String?
+  public var address2: Swift.String?
+  public var city: Swift.String?
+  public var state: Swift.String?
+  public var zip: Swift.String?
+  public var country: Swift.String?
+  public var phone: Swift.String?
+  public var status: PayCore.PayCoreTxnStatus?
+  public var refunded: Swift.Int?
+  public var reserved: PayCore.PayCoreTxnReserved?
+  public var misused: Swift.Int?
+  public var checkStage: Swift.String?
+  public var inactive: Swift.Bool?
+  public var frozen: Swift.Bool?
+  public var imported: Swift.Bool?
+  public var emvResponseCode: Swift.String?
+  public var emvAuthCode: Swift.String?
+  public var emvIssuerScript1: Swift.String?
+  public var emvIssuerScript2: Swift.String?
+  public var platform: Swift.String?
+  public var mid: Swift.String?
+  override public init()
+  public init(id: Swift.String)
+  required public init(from decoder: Swift.Decoder) throws
+  override public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+}
+public class PayCoreCustomer : PayCore.PayCoreBase, PayCore.PayCoreResource {
+  public typealias Model = PayCore.PayCoreCustomer
+  final public let methodPath: Swift.String
+  public var login: PayCore.PayCoreLogin?
+  public var merchant: PayCore.PayCoreMerchant?
+  public var first: Swift.String?
+  public var middle: Swift.String?
+  public var last: Swift.String?
+  public var company: Swift.String?
+  public var email: Swift.String?
+  public var fax: Swift.String?
+  public var phone: Swift.String?
+  public var country: Swift.String?
+  public var zip: Swift.String?
+  public var state: Swift.String?
+  public var city: Swift.String?
+  public var address1: Swift.String?
+  public var address2: Swift.String?
+  public var inactive: Swift.Bool?
+  public var frozen: Swift.Bool?
+  override public init()
+  public init(id: Swift.String)
+  required public init(from decoder: Swift.Decoder) throws
+  override public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+}
+@objc public class PayCoreTransResponse : ObjectiveC.NSObject {
+  public var address1: Swift.String?
+  public var address2: Swift.String?
+  public var allowPartial: Swift.String?
+  public var approved: Swift.Int?
+  public var authCode: Swift.String?
+  public var authDate: Swift.String?
+  public var authorization: Swift.String?
+  public var batch: Swift.String?
+  public var captured: Swift.String?
+  public var cashback: Swift.String?
+  public var checkStage: Swift.String?
+  public var city: Swift.String?
+  public var clientIp: Swift.String?
+  public var company: Swift.String?
+  public var country: Swift.String?
+  public var created: Swift.String?
+  public var creator: Swift.String?
+  public var currency: Swift.String?
+  public var cvv: Swift.String?
+  public var transDescription: Swift.String?
+  public var descriptor: Swift.String?
+  public var discount: Swift.String?
+  public var duty: Swift.String?
+  public var email: Swift.String?
+  public var emv: Swift.String?
+  public var entryMode: Swift.String?
+  public var expiration: Swift.String?
+  public var firstName: Swift.String?
+  public var lastName: Swift.String?
+  public var fortxn: Swift.String?
+  public var fromtxn: Swift.String?
+  public var frozen: Swift.String?
+  public var idString: Swift.String?
+  public var inactive: Swift.String?
+  public var ipCreated: Swift.String?
+  public var ipModified: Swift.String?
+  public var merchant: Swift.String?
+  public var middle: Swift.String?
+  public var misused: Swift.String?
+  public var modified: Swift.String?
+  public var modifier: Swift.String?
+  public var order: Swift.String?
+  public var origin: Swift.String?
+  public var payments: PayCore.PayCorePaymentObject?
+  public var phone: Swift.String?
+  public var refunded: Swift.String?
+  public var reserverd: Swift.String?
+  public var settled: Swift.String?
+  public var settledCurrency: Swift.String?
+  public var settledTotal: Swift.String?
+  public var shipping: Swift.String?
+  public var signature: Swift.String?
+  public var state: Swift.String?
+  public var status: Swift.String?
+  public var subscription: Swift.String?
+  public var swiped: Swift.String?
+  public var tax: Swift.String?
+  public var terminal: Swift.String?
+  public var terminalCapability: Swift.String?
+  public var token: Swift.String?
+  public var total: Swift.String?
+  public var type: Swift.String?
+  public var unattended: Swift.String?
+  public var zip: Swift.String?
+  public var emvResponseCode: Swift.String?
+  public var emvAuthCode: Swift.String?
+  public var emvIssuerScript1: Swift.String?
+  public var emvIssuerScript2: Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+}
+public class PayCoreSession : PayCore.PayCoreBase, PayCore.PayCoreResource {
+  public typealias Model = PayCore.PayCoreSession
+  final public let methodPath: Swift.String
+  public var login: PayCore.PayCoreLogin?
+  public var key: Swift.String?
+  public var publicSession: Swift.Bool?
+  public var inactive: Swift.Bool?
+  public var frozen: Swift.Bool?
+  override public init()
+  public init(id: Swift.String)
+  required public init(from decoder: Swift.Decoder) throws
+  override public func encode(to encoder: Swift.Encoder) throws
+  public static func sessionFromLogin(userName: Swift.String, password: Swift.String, withCompletion completion: @escaping (PayCore.PayCoreSession?, PayCore.PayCoreResponseDetails?, [PayCore.PayCoreError]?) -> Swift.Void)
+  @objc deinit
+}
+public protocol PayCoreResource {
+  associatedtype Model : Swift.Decodable, Swift.Encodable
+  var methodPath: Swift.String { get }
+}
+extension PayCoreResource {
+  public var url: Swift.String {
+    get
+  }
+}
+@objc public class PayCorePaymentObject : ObjectiveC.NSObject {
+  public var bin: Swift.String?
+  public var method: Swift.Int?
+  public var payment: Swift.String?
+  public var routing: Swift.String?
+  public var number: Swift.String?
+  public var cvv: Swift.String?
+  public var track: Swift.String?
+  public var ksn: Swift.String?
+  public var encrypted: Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+}
+public class PayCoreRequest<Resource> where Resource : PayCore.PayCoreResource {
+  public typealias PayCoreRequestCompletion = ([Resource.Model]?, PayCore.PayCoreResponseDetails?, [PayCore.PayCoreError]?) -> Swift.Void
+  public var lastURL: Swift.String?
+  public var id: Swift.String?
+  public var pageNumber: Swift.Int?
+  public var pageLimit: Swift.Int?
+  public init(using resource: Resource)
+  public func addPropertyExpansion(_ expands: [Swift.String])
+  public func clearPropertyExpansions()
+  public func addHTTPHeader(header: Swift.String, value: Swift.String)
+  public func clearHTTPHeaders(header: Swift.String, value: Swift.String)
+  public func addSearchParameter(_ parameter: PayCore.PayCoreSearchParameter)
+  public func clearSearchParameters()
+  public func load(withCompletion completion: @escaping PayCore.PayCoreRequest<Resource>.PayCoreRequestCompletion)
+  public func load(fromId id: Swift.String, withCompletion completion: @escaping PayCore.PayCoreRequest<Resource>.PayCoreRequestCompletion)
+  public func create(object: Resource.Model?, withCompletion completion: @escaping PayCore.PayCoreRequest<Resource>.PayCoreRequestCompletion)
+  public func update(object: Resource.Model, withCompletion completion: @escaping PayCore.PayCoreRequest<Resource>.PayCoreRequestCompletion)
+  public func delete(object: Resource.Model, withCompletion completion: @escaping PayCore.PayCoreRequest<Resource>.PayCoreRequestCompletion)
+  public func delete(fromId id: Swift.String, withCompletion completion: @escaping PayCore.PayCoreRequest<Resource>.PayCoreRequestCompletion)
+  @objc deinit
+}
+public enum PayCoreBatchStatus : Swift.Int, Swift.Codable {
+  case open
+  case closed
+  case processing
+  case processed
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public class PayCoreBatch : PayCore.PayCoreBase, PayCore.PayCoreResource {
+  public typealias Model = PayCore.PayCoreBatch
+  final public let methodPath: Swift.String
+  public var merchant: PayCore.PayCoreMerchant?
+  public var date: Foundation.Date?
+  public var status: PayCore.PayCoreBatchStatus?
+  public var clientRef: Swift.String?
+  public var inactive: Swift.Bool?
+  public var frozen: Swift.Bool?
+  override public init()
+  public init(id: Swift.String)
+  required public init(from decoder: Swift.Decoder) throws
+  override public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+}
+public class PayCoreBase : Swift.Codable {
+  public var id: Swift.String?
+  public var created: Foundation.Date?
+  public var modified: Foundation.Date?
+  public var creator: PayCore.PayCoreLogin?
+  public var modifier: PayCore.PayCoreLogin?
+  public init()
+  required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public enum PayCorePlanSchedule : Swift.Int, Swift.Codable {
+  case daily
+  case weekly
+  case monthly
+  case annually
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public class PayCorePlan : PayCore.PayCoreBase, PayCore.PayCoreResource {
+  public typealias Model = PayCore.PayCorePlan
+  final public let methodPath: Swift.String
+  public var merchant: PayCore.PayCoreMerchant?
+  public var name: Swift.String?
+  public var description: Swift.String?
+  public var schedule: PayCore.PayCorePlanSchedule?
+  public var scheduleFactor: Swift.Int?
+  public var amount: Swift.Int?
+  public var inactive: Swift.Bool?
+  public var frozen: Swift.Bool?
+  override public init()
+  public init(id: Swift.String)
+  required public init(from decoder: Swift.Decoder) throws
+  override public func encode(to encoder: Swift.Encoder) throws
+  @objc deinit
+}
+extension PayCore.PayCoreSearchParameter.PayCoreSearchFunction : Swift.Equatable {}
+extension PayCore.PayCoreSearchParameter.PayCoreSearchFunction : Swift.Hashable {}
+extension PayCore.PayCoreSearchParameter.PayCoreSearchFunction : Swift.RawRepresentable {}
+extension PayCore.PayCoreCCType : Swift.Equatable {}
+extension PayCore.PayCoreCCType : Swift.Hashable {}
+extension PayCore.PayCoreCCType : Swift.RawRepresentable {}
+extension PayCore.PayCoreAccountMethod : Swift.Equatable {}
+extension PayCore.PayCoreAccountMethod : Swift.Hashable {}
+extension PayCore.PayCoreAccountMethod : Swift.RawRepresentable {}
+extension PayCore.PayCoreAccountStatus : Swift.Equatable {}
+extension PayCore.PayCoreAccountStatus : Swift.Hashable {}
+extension PayCore.PayCoreAccountStatus : Swift.RawRepresentable {}
+extension PayCore.PayCorePaymentMethod : Swift.Equatable {}
+extension PayCore.PayCorePaymentMethod : Swift.Hashable {}
+extension PayCore.PayCorePaymentMethod : Swift.RawRepresentable {}
+extension PayCore.PayCoreEntityType : Swift.Equatable {}
+extension PayCore.PayCoreEntityType : Swift.Hashable {}
+extension PayCore.PayCoreEntityType : Swift.RawRepresentable {}
+extension PayCore.PayCoreMerchantStatus : Swift.Equatable {}
+extension PayCore.PayCoreMerchantStatus : Swift.Hashable {}
+extension PayCore.PayCoreMerchantStatus : Swift.RawRepresentable {}
+extension PayCore.PayCoreTaxIDStatus : Swift.Equatable {}
+extension PayCore.PayCoreTaxIDStatus : Swift.Hashable {}
+extension PayCore.PayCoreTaxIDStatus : Swift.RawRepresentable {}
+extension PayCore.PayCoreChargebackDisputeState : Swift.Equatable {}
+extension PayCore.PayCoreChargebackDisputeState : Swift.Hashable {}
+extension PayCore.PayCoreChargebackDisputeState : Swift.RawRepresentable {}
+extension PayCore.PayCoreTxnType : Swift.Hashable {}
+extension PayCore.PayCoreTxnType : Swift.RawRepresentable {}
+extension PayCore.PayCoreTxnOrigin : Swift.Hashable {}
+extension PayCore.PayCoreTxnOrigin : Swift.RawRepresentable {}
+extension PayCore.PayCoreTxnStatus : Swift.Hashable {}
+extension PayCore.PayCoreTxnStatus : Swift.RawRepresentable {}
+extension PayCore.PayCoreTxnReserved : Swift.Equatable {}
+extension PayCore.PayCoreTxnReserved : Swift.Hashable {}
+extension PayCore.PayCoreTxnReserved : Swift.RawRepresentable {}
+extension PayCore.PayCoreBatchStatus : Swift.Equatable {}
+extension PayCore.PayCoreBatchStatus : Swift.Hashable {}
+extension PayCore.PayCoreBatchStatus : Swift.RawRepresentable {}
+extension PayCore.PayCorePlanSchedule : Swift.Equatable {}
+extension PayCore.PayCorePlanSchedule : Swift.Hashable {}
+extension PayCore.PayCorePlanSchedule : Swift.RawRepresentable {}
