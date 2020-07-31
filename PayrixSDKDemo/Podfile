@@ -1,0 +1,9 @@
+# PodFile for Payrix iOS Demo App
+
+platform :ios, '12.0'
+use_frameworks!
+
+target 'PayrixSDKDemo' do
+	pod 'PayrixSDK'
+
+end
