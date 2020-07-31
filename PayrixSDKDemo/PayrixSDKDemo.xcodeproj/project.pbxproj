@@ -1,0 +1,465 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0B3F7A9624C63AE70004B03E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3F7A9524C63AE70004B03E /* AppDelegate.swift */; };
+		0B3F7A9824C63AE70004B03E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3F7A9724C63AE70004B03E /* SceneDelegate.swift */; };
+		0B3F7A9A24C63AE70004B03E /* DemoStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3F7A9924C63AE70004B03E /* DemoStart.swift */; };
+		0B3F7A9D24C63AE70004B03E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B3F7A9B24C63AE70004B03E /* Main.storyboard */; };
+		0B3F7A9F24C63AFA0004B03E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B3F7A9E24C63AFA0004B03E /* Assets.xcassets */; };
+		0B3F7AA224C63AFA0004B03E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B3F7AA024C63AFA0004B03E /* LaunchScreen.storyboard */; };
+		0B5FA13D24C8DBF90056DFAA /* SharedUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5FA13C24C8DBF90056DFAA /* SharedUtilities.swift */; };
+		0B6009B824C894B100BF8E62 /* DemoAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6009B724C894B100BF8E62 /* DemoAuthentication.swift */; };
+		0B6009BA24C89C2D00BF8E62 /* DemoScanBT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6009B924C89C2D00BF8E62 /* DemoScanBT.swift */; };
+		0B6009BC24C89C8000BF8E62 /* DemoTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6009BB24C89C8000BF8E62 /* DemoTransaction.swift */; };
+		0BF05CB824D0A29500AA52ED /* CurrentTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF05CB724D0A29500AA52ED /* CurrentTransaction.swift */; };
+		0BFA2A3D24C9E90F0006014E /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFA2A3C24C9E90F0006014E /* NetworkReachability.swift */; };
+		B1F5A97A6E6694782311F503 /* Pods_PayrixSDKDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66CF27649A8A97ECEE758E68 /* Pods_PayrixSDKDemo.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0BFA2A3924C9DBE90006014E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0B3F7A9224C63AE70004B03E /* PayrixSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PayrixSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B3F7A9524C63AE70004B03E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0B3F7A9724C63AE70004B03E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		0B3F7A9924C63AE70004B03E /* DemoStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoStart.swift; sourceTree = "<group>"; };
+		0B3F7A9C24C63AE70004B03E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0B3F7A9E24C63AFA0004B03E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0B3F7AA124C63AFA0004B03E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0B3F7AA324C63AFA0004B03E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B5FA13C24C8DBF90056DFAA /* SharedUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedUtilities.swift; sourceTree = "<group>"; };
+		0B6009B724C894B100BF8E62 /* DemoAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAuthentication.swift; sourceTree = "<group>"; };
+		0B6009B924C89C2D00BF8E62 /* DemoScanBT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoScanBT.swift; sourceTree = "<group>"; };
+		0B6009BB24C89C8000BF8E62 /* DemoTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTransaction.swift; sourceTree = "<group>"; };
+		0BF05CB724D0A29500AA52ED /* CurrentTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentTransaction.swift; sourceTree = "<group>"; };
+		0BFA2A3C24C9E90F0006014E /* NetworkReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
+		56352C5F16677DEE8EC9840A /* Pods-PayrixSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayrixSDKDemo.debug.xcconfig"; path = "Target Support Files/Pods-PayrixSDKDemo/Pods-PayrixSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		66CF27649A8A97ECEE758E68 /* Pods_PayrixSDKDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PayrixSDKDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A6A4D7C2609B4328A12AD16 /* Pods-PayrixSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayrixSDKDemo.release.xcconfig"; path = "Target Support Files/Pods-PayrixSDKDemo/Pods-PayrixSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0B3F7A8F24C63AE70004B03E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B1F5A97A6E6694782311F503 /* Pods_PayrixSDKDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		094A42BDA665DAE8760932AC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				56352C5F16677DEE8EC9840A /* Pods-PayrixSDKDemo.debug.xcconfig */,
+				9A6A4D7C2609B4328A12AD16 /* Pods-PayrixSDKDemo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		0B3F7A8924C63AE70004B03E = {
+			isa = PBXGroup;
+			children = (
+				0B3F7A9424C63AE70004B03E /* PayrixSDKDemo */,
+				0BFA2A3224C9DBAD0006014E /* Frameworks */,
+				0B3F7A9324C63AE70004B03E /* Products */,
+				094A42BDA665DAE8760932AC /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		0B3F7A9324C63AE70004B03E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0B3F7A9224C63AE70004B03E /* PayrixSDKDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0B3F7A9424C63AE70004B03E /* PayrixSDKDemo */ = {
+			isa = PBXGroup;
+			children = (
+				0BF05CB724D0A29500AA52ED /* CurrentTransaction.swift */,
+				0B3F7A9524C63AE70004B03E /* AppDelegate.swift */,
+				0B3F7A9724C63AE70004B03E /* SceneDelegate.swift */,
+				0B3F7A9924C63AE70004B03E /* DemoStart.swift */,
+				0B6009B724C894B100BF8E62 /* DemoAuthentication.swift */,
+				0B6009B924C89C2D00BF8E62 /* DemoScanBT.swift */,
+				0B6009BB24C89C8000BF8E62 /* DemoTransaction.swift */,
+				0B3F7A9B24C63AE70004B03E /* Main.storyboard */,
+				0B5FA13C24C8DBF90056DFAA /* SharedUtilities.swift */,
+				0BFA2A3C24C9E90F0006014E /* NetworkReachability.swift */,
+				0B3F7A9E24C63AFA0004B03E /* Assets.xcassets */,
+				0B3F7AA024C63AFA0004B03E /* LaunchScreen.storyboard */,
+				0B3F7AA324C63AFA0004B03E /* Info.plist */,
+			);
+			path = PayrixSDKDemo;
+			sourceTree = "<group>";
+		};
+		0BFA2A3224C9DBAD0006014E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				66CF27649A8A97ECEE758E68 /* Pods_PayrixSDKDemo.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0B3F7A9124C63AE70004B03E /* PayrixSDKDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0B3F7AA624C63AFA0004B03E /* Build configuration list for PBXNativeTarget "PayrixSDKDemo" */;
+			buildPhases = (
+				2664D3FCE996CC2F561574CA /* [CP] Check Pods Manifest.lock */,
+				0B3F7A8E24C63AE70004B03E /* Sources */,
+				0B3F7A8F24C63AE70004B03E /* Frameworks */,
+				0B3F7A9024C63AE70004B03E /* Resources */,
+				0BFA2A3924C9DBE90006014E /* Embed Frameworks */,
+				4984FEDF04776A18BB9650E7 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PayrixSDKDemo;
+			productName = PayrixSDKDemo;
+			productReference = 0B3F7A9224C63AE70004B03E /* PayrixSDKDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0B3F7A8A24C63AE70004B03E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = Payrix;
+				TargetAttributes = {
+					0B3F7A9124C63AE70004B03E = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = 0B3F7A8D24C63AE70004B03E /* Build configuration list for PBXProject "PayrixSDKDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0B3F7A8924C63AE70004B03E;
+			productRefGroup = 0B3F7A9324C63AE70004B03E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0B3F7A9124C63AE70004B03E /* PayrixSDKDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0B3F7A9024C63AE70004B03E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B3F7AA224C63AFA0004B03E /* LaunchScreen.storyboard in Resources */,
+				0B3F7A9F24C63AFA0004B03E /* Assets.xcassets in Resources */,
+				0B3F7A9D24C63AE70004B03E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2664D3FCE996CC2F561574CA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PayrixSDKDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4984FEDF04776A18BB9650E7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PayrixSDKDemo/Pods-PayrixSDKDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PayrixSDKDemo/Pods-PayrixSDKDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PayrixSDKDemo/Pods-PayrixSDKDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0B3F7A8E24C63AE70004B03E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B6009B824C894B100BF8E62 /* DemoAuthentication.swift in Sources */,
+				0B5FA13D24C8DBF90056DFAA /* SharedUtilities.swift in Sources */,
+				0B6009BA24C89C2D00BF8E62 /* DemoScanBT.swift in Sources */,
+				0B3F7A9A24C63AE70004B03E /* DemoStart.swift in Sources */,
+				0B6009BC24C89C8000BF8E62 /* DemoTransaction.swift in Sources */,
+				0BF05CB824D0A29500AA52ED /* CurrentTransaction.swift in Sources */,
+				0B3F7A9624C63AE70004B03E /* AppDelegate.swift in Sources */,
+				0B3F7A9824C63AE70004B03E /* SceneDelegate.swift in Sources */,
+				0BFA2A3D24C9E90F0006014E /* NetworkReachability.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0B3F7A9B24C63AE70004B03E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0B3F7A9C24C63AE70004B03E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0B3F7AA024C63AFA0004B03E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0B3F7AA124C63AFA0004B03E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0B3F7AA424C63AFA0004B03E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0B3F7AA524C63AFA0004B03E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0B3F7AA724C63AFA0004B03E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56352C5F16677DEE8EC9840A /* Pods-PayrixSDKDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2007.05;
+				DEVELOPMENT_TEAM = 4X73MJKD7A;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				INFOPLIST_FILE = PayrixSDKDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Payrix.PayrixSDKDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		0B3F7AA824C63AFA0004B03E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A6A4D7C2609B4328A12AD16 /* Pods-PayrixSDKDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2007.05;
+				DEVELOPMENT_TEAM = 4X73MJKD7A;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				INFOPLIST_FILE = PayrixSDKDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Payrix.PayrixSDKDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0B3F7A8D24C63AE70004B03E /* Build configuration list for PBXProject "PayrixSDKDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B3F7AA424C63AFA0004B03E /* Debug */,
+				0B3F7AA524C63AFA0004B03E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0B3F7AA624C63AFA0004B03E /* Build configuration list for PBXNativeTarget "PayrixSDKDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B3F7AA724C63AFA0004B03E /* Debug */,
+				0B3F7AA824C63AFA0004B03E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0B3F7A8A24C63AE70004B03E /* Project object */;
+}
