@@ -1,0 +1,526 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		E8F23D5C87DF1D04080180D3BDC3CD08 /* PayrixSDK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 3100DA8CC5E73F1EDF10F1E276EE0D8D /* Build configuration list for PBXAggregateTarget "PayrixSDK" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = PayrixSDK;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		3263B7916A5D091E4B9252B0FA710310 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		342E6033EB6EA1D8FCE7B56FE5DDE30F /* Pods-PayrixSDKDemo-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1783F89B14D4FE81680DC1454C38B033 /* Pods-PayrixSDKDemo-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		73947D090319348EB96D224EE7DA638A /* Pods-PayrixSDKDemo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FF02BC830CA8B886521F62074C0F98B /* Pods-PayrixSDKDemo-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		70083F4FD80F4607A1E4EEBDD15B7979 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8F23D5C87DF1D04080180D3BDC3CD08;
+			remoteInfo = PayrixSDK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1783F89B14D4FE81680DC1454C38B033 /* Pods-PayrixSDKDemo-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PayrixSDKDemo-umbrella.h"; sourceTree = "<group>"; };
+		2F378B6FD0B57A99BBD91C19B49CEBD3 /* Pods-PayrixSDKDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PayrixSDKDemo-acknowledgements.plist"; sourceTree = "<group>"; };
+		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3F719DE28861CD5ABCE98571B45F9129 /* Pods-PayrixSDKDemo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PayrixSDKDemo-frameworks.sh"; sourceTree = "<group>"; };
+		550EB11DD45291F7ECC3E66666D7809F /* PayCard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayCard.framework; path = PayrixSDK/PayCard.framework; sourceTree = "<group>"; };
+		60E2EC9417084B2F04CA38932C7F54EA /* Pods-PayrixSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PayrixSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		66D1CDDA912EC08FECB5A8087DD8E2D4 /* Pods-PayrixSDKDemo.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-PayrixSDKDemo.modulemap"; sourceTree = "<group>"; };
+		6A042DEA40B21D9F06C12094AE2BEC5A /* Pods-PayrixSDKDemo-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PayrixSDKDemo-Info.plist"; sourceTree = "<group>"; };
+		6A257329AE698BDB3DC7170194D8C1AB /* PayrixSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PayrixSDK.debug.xcconfig; sourceTree = "<group>"; };
+		8FF02BC830CA8B886521F62074C0F98B /* Pods-PayrixSDKDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PayrixSDKDemo-dummy.m"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9E66B8C8624E477C6941B56F3C1CB05B /* PayrixSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PayrixSDK.release.xcconfig; sourceTree = "<group>"; };
+		B807CC897978AD8C849BBEED13019458 /* Pods_PayrixSDKDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PayrixSDKDemo.framework; path = "Pods-PayrixSDKDemo.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6B17255AF50A34D1601AB67F9D8D421 /* Pods-PayrixSDKDemo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PayrixSDKDemo-acknowledgements.markdown"; sourceTree = "<group>"; };
+		DD3B38F8C35F176BAC3470DEBA0E5184 /* PayCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PayCore.framework; path = PayrixSDK/PayCore.framework; sourceTree = "<group>"; };
+		EBBDDFA4FB45FAC17791F4758AA39F67 /* Pods-PayrixSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PayrixSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A9388BC6388C7B3DB8D25D2DBA52F896 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3263B7916A5D091E4B9252B0FA710310 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0D6E5509CB5FDC08F9480CF37A930AD4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				550EB11DD45291F7ECC3E66666D7809F /* PayCard.framework */,
+				DD3B38F8C35F176BAC3470DEBA0E5184 /* PayCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0D9E3AD90A535EAC7D08604092C6FB76 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B807CC897978AD8C849BBEED13019458 /* Pods_PayrixSDKDemo.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6D993FDD112D2C1C65830FCD7D2FE288 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DF12F6716A8B508C91094EBA6F1215C1 /* PayrixSDK */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9AF4D5D3DBD29FA199A07ECC98E897D4 /* Pods-PayrixSDKDemo */ = {
+			isa = PBXGroup;
+			children = (
+				66D1CDDA912EC08FECB5A8087DD8E2D4 /* Pods-PayrixSDKDemo.modulemap */,
+				D6B17255AF50A34D1601AB67F9D8D421 /* Pods-PayrixSDKDemo-acknowledgements.markdown */,
+				2F378B6FD0B57A99BBD91C19B49CEBD3 /* Pods-PayrixSDKDemo-acknowledgements.plist */,
+				8FF02BC830CA8B886521F62074C0F98B /* Pods-PayrixSDKDemo-dummy.m */,
+				3F719DE28861CD5ABCE98571B45F9129 /* Pods-PayrixSDKDemo-frameworks.sh */,
+				6A042DEA40B21D9F06C12094AE2BEC5A /* Pods-PayrixSDKDemo-Info.plist */,
+				1783F89B14D4FE81680DC1454C38B033 /* Pods-PayrixSDKDemo-umbrella.h */,
+				60E2EC9417084B2F04CA38932C7F54EA /* Pods-PayrixSDKDemo.debug.xcconfig */,
+				EBBDDFA4FB45FAC17791F4758AA39F67 /* Pods-PayrixSDKDemo.release.xcconfig */,
+			);
+			name = "Pods-PayrixSDKDemo";
+			path = "Target Support Files/Pods-PayrixSDKDemo";
+			sourceTree = "<group>";
+		};
+		BF6BA650471E847870719CC474620375 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6A257329AE698BDB3DC7170194D8C1AB /* PayrixSDK.debug.xcconfig */,
+				9E66B8C8624E477C6941B56F3C1CB05B /* PayrixSDK.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/PayrixSDK";
+			sourceTree = "<group>";
+		};
+		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				6D993FDD112D2C1C65830FCD7D2FE288 /* Pods */,
+				0D9E3AD90A535EAC7D08604092C6FB76 /* Products */,
+				F2F699B06A3BEC3CD28E3E19ED87D864 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DF12F6716A8B508C91094EBA6F1215C1 /* PayrixSDK */ = {
+			isa = PBXGroup;
+			children = (
+				0D6E5509CB5FDC08F9480CF37A930AD4 /* Frameworks */,
+				BF6BA650471E847870719CC474620375 /* Support Files */,
+			);
+			name = PayrixSDK;
+			path = PayrixSDK;
+			sourceTree = "<group>";
+		};
+		F2F699B06A3BEC3CD28E3E19ED87D864 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9AF4D5D3DBD29FA199A07ECC98E897D4 /* Pods-PayrixSDKDemo */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0858AA30CD5A5D96A5271D05748B1F50 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				342E6033EB6EA1D8FCE7B56FE5DDE30F /* Pods-PayrixSDKDemo-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		C0405DB4B4E63FC08AE8EB62E591A01B /* Pods-PayrixSDKDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 08FAE4760C3C51E77CB9F30745ABCD20 /* Build configuration list for PBXNativeTarget "Pods-PayrixSDKDemo" */;
+			buildPhases = (
+				0858AA30CD5A5D96A5271D05748B1F50 /* Headers */,
+				5F04A165A2EC092711FD1CCFEAF194FC /* Sources */,
+				A9388BC6388C7B3DB8D25D2DBA52F896 /* Frameworks */,
+				15CB52B80E33EFCC8B3220DEA3AF3CD0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7BFA7A203026530166DA9BD0957A4862 /* PBXTargetDependency */,
+			);
+			name = "Pods-PayrixSDKDemo";
+			productName = "Pods-PayrixSDKDemo";
+			productReference = B807CC897978AD8C849BBEED13019458 /* Pods_PayrixSDKDemo.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 0D9E3AD90A535EAC7D08604092C6FB76 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E8F23D5C87DF1D04080180D3BDC3CD08 /* PayrixSDK */,
+				C0405DB4B4E63FC08AE8EB62E591A01B /* Pods-PayrixSDKDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		15CB52B80E33EFCC8B3220DEA3AF3CD0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5F04A165A2EC092711FD1CCFEAF194FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73947D090319348EB96D224EE7DA638A /* Pods-PayrixSDKDemo-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7BFA7A203026530166DA9BD0957A4862 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = PayrixSDK;
+			target = E8F23D5C87DF1D04080180D3BDC3CD08 /* PayrixSDK */;
+			targetProxy = 70083F4FD80F4607A1E4EEBDD15B7979 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		131356BE54884448CA49C07BEDF4BB2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		35199D46061AB3ACEEC7B31C5C2089DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E66B8C8624E477C6941B56F3C1CB05B /* PayrixSDK.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5DC46DAB22719323184FDDAE39F0CD9C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A257329AE698BDB3DC7170194D8C1AB /* PayrixSDK.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D5DCBD8BB19C0C519C95C90A79990D8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60E2EC9417084B2F04CA38932C7F54EA /* Pods-PayrixSDKDemo.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-PayrixSDKDemo/Pods-PayrixSDKDemo-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-PayrixSDKDemo/Pods-PayrixSDKDemo.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E1931189DAA699CC126EAD8C4C2ABBAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBBDDFA4FB45FAC17791F4758AA39F67 /* Pods-PayrixSDKDemo.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-PayrixSDKDemo/Pods-PayrixSDKDemo-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-PayrixSDKDemo/Pods-PayrixSDKDemo.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F090CD07A80273D5A73C8EA19224ADDB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		08FAE4760C3C51E77CB9F30745ABCD20 /* Build configuration list for PBXNativeTarget "Pods-PayrixSDKDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5DCBD8BB19C0C519C95C90A79990D8D /* Debug */,
+				E1931189DAA699CC126EAD8C4C2ABBAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3100DA8CC5E73F1EDF10F1E276EE0D8D /* Build configuration list for PBXAggregateTarget "PayrixSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5DC46DAB22719323184FDDAE39F0CD9C /* Debug */,
+				35199D46061AB3ACEEC7B31C5C2089DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				131356BE54884448CA49C07BEDF4BB2A /* Debug */,
+				F090CD07A80273D5A73C8EA19224ADDB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

@@ -1,0 +1,6 @@
+framework module Pods_PayrixSDKDemo {
+  umbrella header "Pods-PayrixSDKDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

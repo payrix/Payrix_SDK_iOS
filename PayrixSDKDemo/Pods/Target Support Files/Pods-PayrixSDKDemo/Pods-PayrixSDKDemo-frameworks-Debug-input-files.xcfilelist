@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-PayrixSDKDemo/Pods-PayrixSDKDemo-frameworks.sh
+${PODS_ROOT}/PayrixSDK/PayrixSDK/PayCore.framework
+${PODS_ROOT}/PayrixSDK/PayrixSDK/PayCard.framework
