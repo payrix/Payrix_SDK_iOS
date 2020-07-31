@@ -3,8 +3,8 @@
 Pod::Spec.new do |s|
 
   s.name         = "PayrixSDK"
-  s.version      = "2.0.1"
-  s.summary      = "PayrixSDK for licensed customers only. Version 2.0.1 adds support for Swift 5"
+  s.version      = "2.1.0"
+  s.summary      = "PayrixSDK for licensed customers only. Version 2.1.0 supports for Swift 5 and provides a Demo app."
 
   #
 
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios
   s.ios.deployment_target = '12.0'
 
-  #
+  # Updated on 7-30-2020 to move repo from GitLab to GitHub for CocoaPods.
 
   s.source       = { :git => "https://github.com/payrix/Payrix_SDK_iOS", :tag => s.version }
   s.ios.deployment_target = '12.0'

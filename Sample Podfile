@@ -1,12 +1,8 @@
-source 'https://github.com/CocoaPods/Specs.git'
-# Uncomment this line to define a global platform for your project
-
-workspace 'YourProjectWS'
-project 'path/YourProject.xcodeproj'
-
+# PodFile for Payrix SDK
 platform :ios, '12.0'
 use_frameworks!
 
-target :'YourProjectApp' do
+target 'YourProjectApp' do
 	pod 'PayrixSDK'
+
 end
