@@ -3,8 +3,8 @@
 Pod::Spec.new do |s|
 
   s.name         = "PayrixSDK"
-  s.version      = "2.1.0"
-  s.summary      = "PayrixSDK for licensed customers only. Version 2.1.0 supports for Swift 5 and provides a Demo app."
+  s.version      = "2.1.1"
+  s.summary      = "PayrixSDK for licensed customers only. Version 2.1.1 supports for Swift 5 and includes IDTech Fix."
 
   #
 
