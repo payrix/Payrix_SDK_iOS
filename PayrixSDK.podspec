@@ -20,6 +20,9 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '12.0'
 
   # Updated on 7-30-2020 to move repo from GitLab to GitHub for CocoaPods.
+  
+  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
   s.source       = { :git => "https://github.com/payrix/Payrix_SDK_iOS", :tag => s.version }
   s.ios.deployment_target = '12.0'
