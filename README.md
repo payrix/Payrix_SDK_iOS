@@ -1,6 +1,6 @@
 # The Payrix Mobile SDK
 Release Note Summary:
-- Version 2.1.1: The PayrixMobile SDK has been revised to include a fix for ID Tech reader Bluetooth disconnection issue.
+- Version 2.1.1 - 2.1.2: The PayrixMobile SDK has been revised to include a fix for ID Tech reader Bluetooth disconnection issue.
 - Version 2.1.0: The PayrixMobile SDK has been revised to include a Demo App, which can be located in folder: PayrixSDKDemo
 - Version 2.0.2: The PayrixMobile SDK has been upgraded to support future Swift versions by using 'Build Libraries for Distribution' = YES
 - Version 2.0.1: The PayrixMobile SDK has been upgraded to Swift 5.
