@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.1 effective-4.2 (swiftlang-1100.0.270.13 clang-1100.0.33.7)
+// swift-compiler-version: Apple Swift version 5.3.1 effective-4.2 (swiftlang-1200.0.41 clang-1200.0.32.8)
 // swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 4.2 -enforce-exclusivity=checked -O -module-name PayCard
 import AVFoundation
 import CoreBluetooth
@@ -19,7 +19,7 @@ public protocol PayCardRDRMgrDelegate {
   func didReceiveAudioDisconnectedNotice()
   func didReceiveDeviceInfo(deviceInfo: [Swift.AnyHashable : Any]!)
 }
-@objc public class PayCardRDRMgr : ObjectiveC.NSObject, PayCard.DeviceControlBBPOSDelegate, PayCard.DeviceControlIDTCHDelegate {
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class PayCardRDRMgr : ObjectiveC.NSObject, PayCard.DeviceControlBBPOSDelegate, PayCard.DeviceControlIDTCHDelegate {
   public static let sharedInstance: PayCard.PayCardRDRMgr
   public var delegate: PayCard.PayCardRDRMgrDelegate?
   public func startPayCardRDRMgr(forDevice: PayCard.PayCardSharedAttr.PayCardSupportedReaders?)
@@ -75,7 +75,7 @@ public protocol TransactionControlBBPOSDelegate {
   func didReturnTxnError(errorType: Swift.Int, errorMessage: Swift.String)
   func didReturnDeviceInfo(forTxn: [Swift.AnyHashable : Any]!)
 }
-@objc public class TransactionControllerBBPOS : ObjectiveC.NSObject, PayCard.BBDeviceControllerDelegate {
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TransactionControllerBBPOS : ObjectiveC.NSObject, PayCard.BBDeviceControllerDelegate {
   public static let sharedInstance: PayCard.TransactionControllerBBPOS
   public var delegate: PayCard.TransactionControlBBPOSDelegate?
   public typealias TransactionControllerDelegate = PayCard.TransactionControlBBPOSDelegate
@@ -105,7 +105,7 @@ public protocol DeviceControlIDTCHDelegate {
   func didReturnDeviceData(deviceInfo: [Swift.AnyHashable : Any]!)
   func didReturnDevError(errorType: Swift.Int, errorMessage: Swift.String)
 }
-@objc public class DeviceControllerIDTCH : ObjectiveC.NSObject, PayCard.IDT_VP3300_Delegate {
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class DeviceControllerIDTCH : ObjectiveC.NSObject, PayCard.IDT_VP3300_Delegate {
   public static let sharedInstance: PayCard.DeviceControllerIDTCH
   public var delegate: PayCard.DeviceControlIDTCHDelegate?
   public typealias DeviceControllerDelegate = PayCard.DeviceControlIDTCHDelegate
@@ -137,7 +137,7 @@ public protocol TransactionControlIDTCHDelegate {
   func didReturnNoDeviceInfo()
   func didReturnSevereError(errorMsg: Swift.String)
 }
-@objc public class TransactionControllerIDTCH : ObjectiveC.NSObject, PayCard.IDT_VP3300_Delegate {
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TransactionControllerIDTCH : ObjectiveC.NSObject, PayCard.IDT_VP3300_Delegate {
   public static let sharedInstance: PayCard.TransactionControllerIDTCH
   public var delegate: PayCard.TransactionControlIDTCHDelegate?
   public typealias TransactionControllerDelegate = PayCard.TransactionControlIDTCHDelegate
@@ -145,7 +145,7 @@ public protocol TransactionControlIDTCHDelegate {
   public func doCardReaderTransaction(withTxnData: [Swift.String : Any])
   @objc public func deviceConnected()
   @objc public func deviceMessage(_ message: Swift.String!)
-  public func swipeMSRData(cardData: PayCard.IDTMSRData!)
+  @objc public func swipeMSRData(_ cardData: PayCard.IDTMSRData!)
   public func swipeMSRDataEMV(emvData: PayCard.IDTEMVData!)
   @objc public func emvTransactionData(_ emvData: PayCard.IDTEMVData!, errorCode error: Swift.Int32)
   public func doPinEntry(pinData: [Swift.String : Any])
@@ -157,7 +157,7 @@ public protocol TransactionControlIDTCHDelegate {
   @objc public func deviceDisconnected()
   @objc deinit
 }
-public class PayCardSharedAttr {
+@_hasMissingDesignatedInitializers public class PayCardSharedAttr {
   public static let bluetoothReaderStateKey: Swift.String
   public static let bluetoothReaderSerialNumberKey: Swift.String
   public static let bluetoothReaderManfgKey: Swift.String
@@ -419,7 +419,7 @@ public protocol PayCardMasterDelegate {
   func didReceiveCardSuccess(gateWayData: [Swift.String : Any], cardStatus: PayCard.CardStatus, cardInfo: [Swift.String : Swift.String?])
   func didReceiveCardIssue(issueMsg: Swift.String, cardStatus: PayCard.CardStatus)
 }
-@objc public class PayCardMaster : ObjectiveC.NSObject, PayCard.TransactionControlBBPOSDelegate, PayCard.TransactionControlIDTCHDelegate {
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class PayCardMaster : ObjectiveC.NSObject, PayCard.TransactionControlBBPOSDelegate, PayCard.TransactionControlIDTCHDelegate {
   public static let sharedInstance: PayCard.PayCardMaster
   public var delegate: PayCard.PayCardMasterDelegate?
   public func doReadCard(withTotalAmt: Swift.Double, withTax: Swift.Double, withTip: Swift.Double, withCurrency: Swift.String, withURL: Swift.String, posMode: PayCard.PayCardSharedAttr.PayCardDeviceMode)
@@ -453,7 +453,7 @@ extension PayCardMasterDelegate {
   public func didReceiveCardSuccess(gateWayData: [Swift.String : Any], cardStatus: PayCard.CardStatus, cardInfo: [Swift.String : Swift.String?])
   public func didReceiveCardIssue(issueMsg: Swift.String, cardStatus: PayCard.CardStatus)
 }
-@objc public class PDeviceLoader : ObjectiveC.NSObject {
+@objc @_inheritsConvenienceInitializers public class PDeviceLoader : ObjectiveC.NSObject {
   public func loadCardReaderDriver(forManfg: PayCard.PayCardSharedAttr.PayCardSupportedReaders) -> (PayCard.PayCardSharedAttr.PayCardSupportedReaders?, Any?, Any?)
   @objc override dynamic public init()
   @objc deinit
@@ -465,7 +465,7 @@ public protocol DeviceControlBBPOSDelegate {
   func didReturnDeviceData(deviceInfo: [Swift.AnyHashable : Any]!)
   func didReturnDevError(errorType: Swift.Int, errorMessage: Swift.String)
 }
-@objc public class DeviceControllerBBPOS : ObjectiveC.NSObject, PayCard.BBDeviceControllerDelegate {
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class DeviceControllerBBPOS : ObjectiveC.NSObject, PayCard.BBDeviceControllerDelegate {
   public static let sharedInstance: PayCard.DeviceControllerBBPOS
   public var delegate: PayCard.DeviceControlBBPOSDelegate?
   public typealias DeviceControllerDelegate = PayCard.DeviceControlBBPOSDelegate
@@ -486,7 +486,7 @@ public protocol DeviceControlBBPOSDelegate {
   @objc public func onError(_ errorType: PayCard.BBDeviceErrorType, errorMessage: Swift.String)
   @objc deinit
 }
-@objc public class SharedDriverAttr : ObjectiveC.NSObject {
+@objc @_inheritsConvenienceInitializers public class SharedDriverAttr : ObjectiveC.NSObject {
   public enum industryEntryMode : Swift.String {
     case read_Unknown
     case read_Manual_Entry
@@ -685,8 +685,8 @@ public protocol DeviceControlBBPOSDelegate {
     public init?(rawValue: Swift.Int)
   }
   public static let devBBPOS_Messages: [Swift.String]
-  @objc override dynamic public init()
   @objc deinit
+  @objc override dynamic public init()
 }
 extension PayCard.PayCardSharedAttr.PayCardConnectMode : Swift.Equatable {}
 extension PayCard.PayCardSharedAttr.PayCardConnectMode : Swift.Hashable {}
@@ -700,6 +700,7 @@ extension PayCard.PayCardSharedAttr.industryPOSEntryMode : Swift.RawRepresentabl
 extension PayCard.PayCardSharedAttr.PayCardDeviceMode : Swift.Equatable {}
 extension PayCard.PayCardSharedAttr.PayCardDeviceMode : Swift.Hashable {}
 extension PayCard.PayCardSharedAttr.PayCardDeviceMode : Swift.RawRepresentable {}
+extension PayCard.PayCardSharedAttr.PayCardSupportedReaders : Swift.Equatable {}
 extension PayCard.PayCardSharedAttr.PayCardSupportedReaders : Swift.Hashable {}
 extension PayCard.PayCardSharedAttr.PayCardSupportedReaders : Swift.RawRepresentable {}
 extension PayCard.PayCardSharedAttr.PayCardReaderUUID : Swift.Equatable {}
