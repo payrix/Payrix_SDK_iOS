@@ -67,10 +67,6 @@ class DemoTransaction: UIViewController, PayCoreRDRTransMgrDelegate, PayCardRDRM
     payCoreRDRTransMgr.delegate = self
     payCardMaster.delegate = self
     
-    
-    let devManfg = sharedUtils.getBTManfg()
-    let useManfg = PayCardSharedAttr.PayCardSupportedReaders.init(rawValue: devManfg ?? PayCardSharedAttr.PayCardSupportedReaders.reader_BBPOS.rawValue)
-    
     /* (Step 2)
     * Start PayCardRDRMgr
     * This step establishes the necessary connections for Callback processing and
@@ -79,6 +75,7 @@ class DemoTransaction: UIViewController, PayCoreRDRTransMgrDelegate, PayCardRDRM
     * PayCardRDRMgr class handles native bluetooth, while PayCardMaster class handles transactional requests.
     */
 
+    let useManfg = doDetermineManfg()
     payCardRDRMgr.startPayCardRDRMgr(forDevice: useManfg)
   }
   
@@ -99,7 +96,7 @@ class DemoTransaction: UIViewController, PayCoreRDRTransMgrDelegate, PayCardRDRM
     sharedUtils.setDemoMode(modeKey: true)
     PayCoreSetTestMode(sharedUtils.getDemoMode() ?? true)
     
-    // Test Code with Hard Values to be Delete
+    // Sample Test Values
     
 //    txtCardNumber.text = "4111111111111111"
 //    txtItemCost.text = "12.50"
@@ -122,6 +119,25 @@ class DemoTransaction: UIViewController, PayCoreRDRTransMgrDelegate, PayCardRDRM
     super.viewDidAppear(animated)
     payCardRDRMgr.delegate = self
   }
+  
+  
+  private func doDetermineManfg() -> PayCardSharedAttr.PayCardSupportedReaders
+  {
+    let devManfg = sharedUtils.getBTManfg() ?? ""
+    var useManfg: PayCardSharedAttr.PayCardSupportedReaders = PayCardSharedAttr.PayCardSupportedReaders.reader_BBPOS
+    
+    if devManfg == PayCardSharedAttr.PayCardSupportedReaders.reader_IDTECH.rawValue
+    {
+      useManfg = PayCardSharedAttr.PayCardSupportedReaders.reader_IDTECH
+    }
+    else if devManfg == PayCardSharedAttr.PayCardSupportedReaders.reader_BBPOS.rawValue
+    {
+      useManfg = PayCardSharedAttr.PayCardSupportedReaders.reader_BBPOS
+    }
+    
+    return useManfg
+  }
+  
   
   /**
   **doSetCurrentTransaction**
@@ -268,8 +284,7 @@ class DemoTransaction: UIViewController, PayCoreRDRTransMgrDelegate, PayCardRDRM
   {
     cardEntryMode = "SWIPE"
     btDeviceManfg = sharedUtils.getBTManfg() ?? PayCardSharedAttr.PayCardSupportedReaders.reader_BBPOS.rawValue
-    var useManfg: PayCardSharedAttr.PayCardSupportedReaders!
-    useManfg = PayCardSharedAttr.PayCardSupportedReaders.init(rawValue: btDeviceManfg)
+    let useManfg = doDetermineManfg()
     
     let calcTax = self.currentTransaction.amount! * self.currentTransaction.taxPercentage!
     let calcTotal = self.currentTransaction.amount! + calcTax + self.currentTransaction.tipAbsoluteAmount!
@@ -525,6 +540,7 @@ class DemoTransaction: UIViewController, PayCoreRDRTransMgrDelegate, PayCardRDRM
   func didReceiveTransactionSuccess(response: PayCoreTransResponse, coreStatus: CoreStatus)
   {
     updateLog(newMessage: "Payment Completed Successfully... APPROVED")
+    updateLog(newMessage: "Payment Completed Successfully... APPROVED")
     
     if let ccNum = response.payments!.number
     {
@@ -555,8 +571,10 @@ class DemoTransaction: UIViewController, PayCoreRDRTransMgrDelegate, PayCardRDRM
        self.currentTransaction.ccCardType = cctypeVal
     }
 
-    self.updateLog(newMessage: "Demo Transaction Processing has completed.")
+    updateLog(newMessage: "Demo Transaction Processing has completed.")
+    updateLog(newMessage: "Demo Transaction Processing has completed.")
     print("Demo Transaction Processing has completed.")
+    refreshLogInfo()
     refreshLogInfo()
   }
   
@@ -638,7 +656,6 @@ class DemoTransaction: UIViewController, PayCoreRDRTransMgrDelegate, PayCardRDRM
   {
     self.view.setNeedsLayout()
     self.lblProcessLog.setNeedsDisplay()
-    
   }
   
 }
